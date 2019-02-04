@@ -1,0 +1,10 @@
+ARG SOURCEIMAGE
+FROM ${SOURCEIMAGE}
+
+USER root
+COPY target/opdemo.war $DOMAIN_HOME/wlsdeploy/applications/
+
+RUN chown -R oracle:oracle $DOMAIN_HOME/wlsdeploy/applications/ && \
+    chmod -R a+xwr $DOMAIN_HOME/wlsdeploy/applications/
+
+WORKDIR ${DOMAIN_HOME}
