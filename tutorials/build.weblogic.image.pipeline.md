@@ -46,22 +46,6 @@ Since you are on the User details page please note the proper user name for late
 
 ![alt text](images/build.weblogic.pipeline/000.username.png)
 
-The second step is to create your image repository in container registry. At the end of the build process the pipeline will push the custom WebLogic image to this repository. When the image is available WebLogic Operator will pull the new (version of the) image from this repository. Using the left sliding menu select **Developer Services** and click **Registry**.
-
-![alt text](images/ocir/004.open.ocir.png)
-
-To create a new repository click **Create Repository**.
-
-![alt text](images/ocir/005.create.repo.png)
-
-Define a repository name e.g. *weblogic-operator-test*. Leave the default *Private* settings and click **Submit**.
-
-![alt text](images/ocir/006.create.repo.submit.png)
-
-Review the newly created repository's detail. Please also note your registry's name (next to the house icon) for later usage. Basically it has to be your OCI tenancy's name.
-
-![alt text](images/ocir/007.check.repo.png)
-
 #### Accept Licence Agreement to use `store/oracle/weblogic:12.2.1.3` image from Docker Store ####
 
 If you have not used the base image [`store/oracle/weblogic:12.2.1.3`](https://store.docker.com/images/oracle-weblogic-server-12c) before, you will need to visit the [Docker Store web interface](https://store.docker.com/images/oracle-weblogic-server-12c) and accept the license agreement before the Docker Store will give you permission to pull that image.
@@ -133,10 +117,10 @@ The repository already contains a necessary `wercker.yml` but before the executi
 
 | Key            | Value                                                                     | Note for WebLogic on OKE                                                                                                                                         |
 |----------------|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OCI_REGISTRY_USERNAME | your_tenancy/your_cloud_username |  The username what you note during user settings. e.g. johnpsmith/oracleidentitycloudservice/john.p.smith@example.com |
+| OCI_REGISTRY_USERNAME | your_cloud_username |  The username what you note during user settings. e.g. oracleidentitycloudservice/john.p.smith@example.com |
 | OCI_REGISTRY_PASSWORD | OCIR Auth Token | The Auth Token you generated previously |
-| TENANCY_REPO | Container repository (including tenancy name!) | The repository name what you created few steps ahead e.g. johnpsmith/weblogic-operator-tutorial |
-| REGION | The key of the home region. See the [documentation](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) to get your region key. | e.g. `fra` - stands for *eu-frankfurt-1* |
+| TENANCY | Name of your tenancy |
+| REGION | The code of your home region. See the [documentation](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) to get your region code. | e.g. `fra` - stands for *eu-frankfurt-1* |
 | DOCKER_USERNAME | Your Docker Hub username | Necessary to pull official WebLogic Server image from Docker Store |
 | DOCKER_PASSWORD | Your Docker Hub password | Necessary to pull official WebLogic Server image from Docker Store |
 
@@ -172,4 +156,16 @@ To get more details about the current step click on the pipeline.
 
 ![alt text](images/build.weblogic.pipeline/015.running.png)
 
-When the workflow is completed the WebLogic image is available in your image repository. Open the OCI console page and go to the container registry console to check.
+When the workflow is completed the WebLogic image is available in your image repository.
+
+![alt text](images/build.weblogic.pipeline/016.run.succeed.png)
+
+Open the OCI console page and go to the container registry console to check.
+
+![alt text](images/ocir/004.open.ocir.png)
+
+In the registry you have to find a repository named like your Oracle Pipeline application (e.g. *weblogic-operator-tutorial*). If you open the repository for more details you  find two images. Technically the two images are the same, but got two tags. One of them is the git commit hash tag which is uniquely identify the image. The second *latest* tag applied because to have easier access to the historically latest release/image.
+
+![alt text](images/build.weblogic.pipeline/017.ocir.image.check.png)
+
+Now the WebLogic domain image is ready to deploy on Kubernetes using WebLogic Operator.
