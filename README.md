@@ -36,7 +36,8 @@ After the proxy configuration double click the **Update** icon and wait until th
 ### The topics to be covered in this hands-on session are: ###
 
 1. [Setup Oracle Kubernetes Engine instance on Oracle Cloud Infrastructure.](tutorials/setup.oke.md)
-2. [Build and deploy WebLogic domain on Kubernetes which runs within the container](tutorials/domain-home-in-image.md) (a.k.a. *Domain-home-in-image* version using WebLogic Operator 2.0)
+2. [Build and deploy WebLogic domain on Kubernetes using Docker image with the WebLogic domain inside the image deployment](tutorials/domain-home-in-image.md) 
+(a.k.a. *Domain-home-in-image* version using WebLogic Operator 2.0)
   - Create custom WebLogic domain image using Oracle Pipelines
   - Install software Loadbalancer
   - Install WebLogic Operator
