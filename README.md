@@ -19,6 +19,7 @@ Oracle services being used during the hands-on are the following:
 - [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account. The tutorial has been tested using [Trial account](https://myservices.us.oraclecloud.com/mycloud/signup) (as of January, 2019).
 - Oracle Cloud Infrastructure CLI, `kubectl`. [Download](https://drive.google.com/open?id=11CvOZ-j50-2q9-rrQmxpEwmQZbPMkw2a) and import the preconfigured VirtualBox image (total required space > 12 GB)
   - [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads) if necessary.
+- [Docker](https://hub.docker.com/) account.
 - [Github ](tutorials/sign.up.github.md) account.
 - [Oracle Container Pipeline](tutorials/sign.up.wercker.md) account.
 
