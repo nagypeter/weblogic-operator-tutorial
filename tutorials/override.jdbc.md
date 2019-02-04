@@ -77,11 +77,11 @@ jdbc-testDatasource.xml:
                   xmlns:s="http://xmlns.oracle.com/weblogic/situational-config">
   <name>testDatasource</name>
   <jdbc-driver-params>
-    <url f:combine-mode="replace"></url>
+    <url f:combine-mode="replace">${secret:dbsecret.url}</url>
     <properties>
        <property>
           <name>user</name>
-          <value f:combine-mode="replace"></value>
+          <value f:combine-mode="replace">${secret:dbsecret.username}</value>
        </property>
     </properties>
   </jdbc-driver-params>
