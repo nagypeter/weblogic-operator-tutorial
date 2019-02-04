@@ -34,6 +34,6 @@ Helm is a framework that helps you manage Kubernetes applications, and helm char
 2. [Install Traefik software loadbalancer](install.traefik.md)
 3. [Install WebLogic Operator](install.operator.md)
 4. [Deploy WebLogic Domain](deploy.weblogic.md)
-5. [Scale WebLogic using `kubectl`](scale.weblogic.md)
+5. [Scaling WebLogic cluster using `kubectl`](scale.weblogic.md)
 6. [Override JDBC Datasource parameters](override.jdbc.md)
 7. [Update Web Application](update.application.md)
