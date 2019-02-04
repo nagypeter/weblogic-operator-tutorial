@@ -1,13 +1,13 @@
-# Build and deploy demo application to WebLogic domain using Oracle Pipelines (Wercker) #
+# Build WebLogic container image using Oracle Container Pipelines (Wercker) #
 
 
-**Oracle Pipelines (Wercker)** is a Docker-Native CI/CD  Automation platform for Kubernetes & Microservice Deployments. Wercker is integrated with Docker containers, which package up application code and can be easily moved from server to server. Each build artifact can be a Docker container. The user can take the container from the Docker Hub or his private registry and build the code before shipping it. Its SaaS platform enables developers to test and deploy code often. They can push software updates incrementally as they are ready, rather than in bundled dumps. It makes it easier for coders to practice continuous integration, a software engineering practice in which each change a developer makes to the codebase is constantly tested in the process so that software doesn’t break when it goes live.
+**Oracle Container Pipelines (Wercker)** is a Docker-Native CI/CD  Automation platform for Kubernetes & Microservice Deployments. Wercker is integrated with Docker containers, which package up application code and can be easily moved from server to server. Each build artifact can be a Docker container. The user can take the container from the Docker Hub or his private registry and build the code before shipping it. Its SaaS platform enables developers to test and deploy code often. They can push software updates incrementally as they are ready, rather than in bundled dumps. It makes it easier for coders to practice continuous integration, a software engineering practice in which each change a developer makes to the codebase is constantly tested in the process so that software doesn’t break when it goes live.
 
-Oracle Pipelines is based on the concept of pipelines, which are automated workflows. Pipelines take pieces of code and automatically execute a series of steps upon that code.
+Oracle Container Pipelines is based on the concept of pipelines, which are automated workflows. Pipelines take pieces of code and automatically execute a series of steps upon that code.
 
-This tutorial demonstrates how to create Oracle Pipelines application (CI/CD) to build custom and update WebLogic container image using official WebLogic image from Docker Store as base source.
+This tutorial demonstrates how to create Oracle Container Pipelines application (CI/CD) to build custom and update WebLogic container image using official WebLogic image from Docker Store as base source.
 
-The key components of Oracle Pipelines:
+The key components of Oracle Container Pipelines:
 
 + **Step** is self-contained bash script or compiled binary for accomplishing specific automation tasks.
 + **Pipelines** are a series of steps that are triggered on a git push or the completion of another pipeline.
@@ -72,7 +72,7 @@ Now you are ready to pull the  image on Docker enabled host after authenticating
 
 #### Import WebLogic Operator Tutorial's source repository into your Github repository ####
 
-In this step you will import the tutorial's source repository. The source repository contains the demo application deployed on top of WebLogic server, configuration yaml to quickly create Oracle Pipeline (CI/CD) application to build cutom WebLogic image and Kubernetes configuration files to deploy the WebLogic Operator and custom WebLogic image.
+In this step you will import the tutorial's source repository. The source repository contains the demo application deployed on top of WebLogic server, configuration yaml to quickly create Oracle Container Pipelines(CI/CD) application to build cutom WebLogic image and Kubernetes configuration files to deploy the WebLogic Operator and custom WebLogic image.
 
 Sign in to [https://github.com](https://github.com) using your account and select **Import repository**.
 
@@ -82,22 +82,22 @@ Enter or copy the *https://github.com/nagypeter/weblogic-operator-tutorial.git* 
 
 ![alt text](images/build.weblogic.pipeline/002.begin.import.png)
 
-#### Create Oracle Pipelines Application to build custom WebLogic Docker container including demo application ####
+#### Create Oracle Container Pipelines Application to build custom WebLogic Docker container including demo application ####
 
-First create your Oracle Pipelines application. Oracle Pipelines acts as continuous integration tool which will produce WebLogic container image and uploads to Oracle Container Registry.
+First create your Oracle Container Pipelines application. Oracle Container Pipelines acts as continuous integration tool which will produce WebLogic container image and uploads to Oracle Container Registry.
 
-The following pipelines are predefined in the Oracle Pipeline configuration file ([wercker.yml](https://github.com/nagypeter/weblogic-operator-tutorial/blob/master/wercker.yml)):
+The following pipelines are predefined in the Oracle Container Pipelinesconfiguration file ([wercker.yml](https://github.com/nagypeter/weblogic-operator-tutorial/blob/master/wercker.yml)):
 
 - **build**: Default and mandatory pipeline to start the workflow. It builds the demo Web Application using Maven.
 - **build-domain-in-home-image**: Pipeline which runs Docker build to create custom WebLogic container image. First time when no *latest* image available in repository it uses official WebLogic image from Docker Store as base image and runs WLST script to customise the image. Also copies the demo Web Application into the image and deploys using WLST. Once *latest* (tag) of the image is available in the repository then the workflow just builds the Web Application and update the *latest* image with the new application binaries. After the Docker build the pipeline produces a new image and pushes to the image repository. Thus every time when changes happen in the sources and committed to Github. The image tag will be the commit hash tag of the source changes  which triggered the new build process. Also the historically latest gets the *latest* tag as well.
 
-[Sign in to Oracle Pipelines (former Wercker)](https://app.wercker.com/) and click **Create your first application** button or the **+** icon at the top right corner and select *Add Application*.
+[Sign in to Oracle Container Pipelines (former Wercker)](https://app.wercker.com/) and click **Create your first application** button or the **+** icon at the top right corner and select *Add Application*.
 
-NOTE! If you need to sign up to Oracle Pipelines do it with your Github account. Click the **LOG IN WITH GITHUB** button and authorise Oracle Pipelines application for your Github account. You can revoke Oracle Pipelines's authorisation request anytime using your Github's profile settings.
+NOTE! If you need to sign up to Oracle Container Pipelines do it with your Github account. Click the **LOG IN WITH GITHUB** button and authorise Oracle Container Pipelines application for your Github account. You can revoke Oracle Container Pipelines's authorisation request anytime using your Github's profile settings.
 
 ![alt text](images/build.weblogic.pipeline/003.new.application.png)
 
-Select the owner of the application. By default it is your Oracle Pipelines username, but it can be any organization where you belong to. Make sure the selected SCM is *GitHub*. Click **Next**.
+Select the owner of the application. By default it is your Oracle Container Pipelines username, but it can be any organization where you belong to. Make sure the selected SCM is *GitHub*. Click **Next**.
 
 ![alt text](images/build.weblogic.pipeline/004.application.user.repo.png)
 
@@ -124,7 +124,7 @@ The repository already contains a necessary `wercker.yml` but before the executi
 | DOCKER_USERNAME | Your Docker Hub username | Necessary to pull official WebLogic Server image from Docker Store |
 | DOCKER_PASSWORD | Your Docker Hub password | Necessary to pull official WebLogic Server image from Docker Store |
 
-To define these variables click **<>Environment** tab and enter keys and values. Remember that these values will be visible to anyone to whom you give access to the Oracle Pipeline application, therefore select **Protected** for any values that should remain hidden, including all passwords.
+To define these variables click **<>Environment** tab and enter keys and values. Remember that these values will be visible to anyone to whom you give access to the Oracle Container Pipelinesapplication, therefore select **Protected** for any values that should remain hidden, including all passwords.
 
 ![alt text](images/build.weblogic.pipeline/008.env.variables.png)
 
@@ -164,7 +164,7 @@ Open the OCI console page and go to the container registry console to check.
 
 ![alt text](images/ocir/004.open.ocir.png)
 
-In the registry you have to find a repository named like your Oracle Pipeline application (e.g. *weblogic-operator-tutorial*). If you open the repository for more details you  find two images. Technically the two images are the same, but got two tags. One of them is the git commit hash tag which is uniquely identify the image. The second *latest* tag applied because to have easier access to the historically latest release/image.
+In the registry you have to find a repository named like your Oracle Container Pipelinesapplication (e.g. *weblogic-operator-tutorial*). If you open the repository for more details you  find two images. Technically the two images are the same, but got two tags. One of them is the git commit hash tag which is uniquely identify the image. The second *latest* tag applied because to have easier access to the historically latest release/image.
 
 ![alt text](images/build.weblogic.pipeline/017.ocir.image.check.png)
 
