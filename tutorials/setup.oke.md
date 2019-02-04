@@ -228,4 +228,18 @@ Now check the `kubectl` for example using the `get node` command:
 
 If you see the node's information the configuration was successful. Compare the name of the nodes to the Public IP addresses of the nodes information available on the web console.
 
-Congratulation, now you have OCI - OKE environment ready to deploy your application.
+##### Set up the RBAC policy for the OKE cluster #####
+
+In order to have permission to access the Kubernetes cluster, you need to authorize your OCI account as a cluster-admin on the OCI Container Engine for Kubernetes cluster. This will require your user OCID, which you used to configure OCI CLI few steps above. (This information available on the OCI console page, under your user settings.)
+
+
+Then execute the role binding command using your(!) user OCID:
+
+	kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=<YOUR_USER_OCID>
+
+For example:
+
+	$ kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=ocid1.user.oc1..aaaaaaaa724gophmrcxxrzg3utunh3rg5ieeyyrwuqfetixdb3mhzesxmdbq
+	clusterrolebinding "my-cluster-admin-binding" created
+
+Congratulation, now your OCI OKE environment is ready to deploy your WebLogic domain.

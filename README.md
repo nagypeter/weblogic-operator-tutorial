@@ -1,4 +1,4 @@
-# Welcome to WebLogic Operator Tutorial #
+# Welcome to Oracle WebLogic Operator Tutorial #
 
 ### About this hands-on tutorial ###
 
@@ -17,7 +17,7 @@ Oracle services being used during the hands-on are the following:
 ### Prerequisites ###
 
 - [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account. The tutorial has been tested using [Trial account](https://myservices.us.oraclecloud.com/mycloud/signup) (as of January, 2019).
-- Oracle Cloud Infrastructure CLI, `kubectl`. [Download](https://drive.google.com/open?id=11CvOZ-j50-2q9-rrQmxpEwmQZbPMkw2a) and import the preconfigured VirtualBox image (total required space > 12 GB)
+- Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/open?id=11CvOZ-j50-2q9-rrQmxpEwmQZbPMkw2a) and import the preconfigured VirtualBox image (total required space > 12 GB)
   - [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads) if necessary.
 - [Docker](https://hub.docker.com/) account.
 - [Github ](tutorials/sign.up.github.md) account.
@@ -36,7 +36,7 @@ After the proxy configuration double click the **Update** icon and wait until th
 ### The topics to be covered in this hands-on session are: ###
 
 1. [Setup Oracle Kubernetes Engine instance on Oracle Cloud Infrastructure.](tutorials/setup.oke.md)
-2. [Build and deploy WebLogic domain on Kubernetes which runs within the container]() (a.k.a. *Domain-home-in-image* version using WebLogic Operator 2.0)
+2. [Build and deploy WebLogic domain on Kubernetes which runs within the container](tutorials/domain-home-in-image.md) (a.k.a. *Domain-home-in-image* version using WebLogic Operator 2.0)
   - Create custom WebLogic domain image using Oracle Pipelines
   - Install software Loadbalancer
   - Install WebLogic Operator
@@ -44,11 +44,11 @@ After the proxy configuration double click the **Update** icon and wait until th
   - Scale WebLogic Cluster
   - Override domain configuration
   - Update demo application
-3. [Deploy WebLogic domain on Kubernetes using Persistence Volumes]() (using WebLogic Operator 1.1)
+3. [Deploy WebLogic domain on Kubernetes using Persistence Volumes](https://github.com/nagypeter/weblogic-on-oke-workshop/blob/master/tutorials/setup.weblogic.kubernetes.dk.md) (using WebLogic Operator 1.1)
   - Setup NFS share on Kubernetes Cluster worker nodes
   - Install software Loadbalancer and WebLogic Operator
   - Deploy WebLogic domain using official WebLogic image from Docker Store
-  - Deploy demo application using Oracle Pipelines
+  - [Deploy demo application using Oracle Pipelines](https://github.com/nagypeter/weblogic-on-oke-workshop/blob/master/tutorials/sample.app.pipeline.md)
 
 ### License ###
 Copyright (c) 2019 Oracle and/or its affiliates
