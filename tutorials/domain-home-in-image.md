@@ -30,10 +30,10 @@ Helm is a framework that helps you manage Kubernetes applications, and helm char
 
 ### The topics to be covered in this hands-on session are: ###
 
-1. [Create Oracle Container Pipelines to build custom WebLogic Domain image](build.weblogic.image.pipeline.md)
-2. [Install Traefik software loadbalancer](install.traefik.md)
+1. [Create Oracle Container Pipelines Application to Build Custom WebLogic Domain Image](build.weblogic.image.pipeline.md)
+2. [Install Traefik Software Loadbalancer](install.traefik.md)
 3. [Install WebLogic Operator](install.operator.md)
 4. [Deploy WebLogic Domain](deploy.weblogic.md)
-5. [Scaling WebLogic cluster using `kubectl`](scale.weblogic.md)
+5. [Scaling WebLogic Cluster](scale.weblogic.md)
 6. [Override JDBC Datasource parameters](override.jdbc.md)
 7. [Update Web Application](update.application.md)
