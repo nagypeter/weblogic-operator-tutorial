@@ -1,3 +1,4 @@
+no-response-timeout: 15
 box: combient/java-mvn
 build:
   steps:
