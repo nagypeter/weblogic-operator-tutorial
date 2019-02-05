@@ -31,7 +31,7 @@ Now open again your Oracle Pipelines application to check the build which is tri
 
 ![](images/update.application/003.wercker.run.png)
 
-During th build go back to your domain resource definition (*domain.yaml*) file and add the following entry to the `spec:` part. For example after the `serverStartPolicy: "IF_NEEDED"` line:
+During the build go back to your domain resource definition (*domain.yaml*) file and add the following entry to the `spec:` part. For example after the `serverStartPolicy: "IF_NEEDED"` line:
 ```
 spec:
   [ ... ]
