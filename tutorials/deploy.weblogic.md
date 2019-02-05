@@ -134,7 +134,7 @@ As a simple solution the best is to configure path routing which will route the 
 
 Execute the following ingress resource definition:
 ```
-cat <<EOF | kubectl apply -f -
+cat << EOF | kubectl apply -f -
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
