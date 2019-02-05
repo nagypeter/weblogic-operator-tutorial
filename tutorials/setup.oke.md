@@ -214,9 +214,9 @@ Copy and execute the commands on your desktop where OCI CLI was configured. For 
 	$ mkdir -p $HOME/.kube
 	$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaaaezwenlfgm4gkmzxha2tamtcgjqwmoldmu3tcnlfgc2tcyzzmrqw --file $HOME/.kube/config --region eu-frankfurt-1
 
-Don't forget to set the KUBECONFIG  variable to the newly created `kubectl` config file.
+Note! `kubectl` by default try to use `$HOME/.kube/config` configuration file. If you save to different location and use different filename don't forget to set the `KUBECONFIG`  variable to the configuration file. E.g.:
 
-	$export KUBECONFIG=$HOME/.kube/config
+	export KUBECONFIG=another_folder_path/kubernetes_config_file_name
 
 Now check the `kubectl` for example using the `get node` command:
 

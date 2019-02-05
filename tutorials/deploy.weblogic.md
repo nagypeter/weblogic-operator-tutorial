@@ -91,8 +91,8 @@ Set the following values:
 |domainHome:|/u01/oracle/user_projects/domains/sample-domain1||
 |image:|YOUR_OCI_REGION_CODE.ocir.io/YOUR_TENANCY_NAME/weblogic-operator-tutorial:latest|"fra.ocir.io/johnpsmith/weblogic-operator-tutorial:latest"|
 |imagePullPolicy:|"Always"||
-|imagePullSecrets: <br>- name:|ocirsecret||
-|webLogicCredentialsSecret: <br>- name:|sample-domain1-weblogic-credentials||
+|imagePullSecrets: <br>- name:|imagePullSecrets: <br>- name: ocirsecret||
+|webLogicCredentialsSecret: <br>- name:|webLogicCredentialsSecret: <br>- name: sample-domain1-weblogic-credentials||
 
 Save the changes and create domain resource using the apply command:
 ```
