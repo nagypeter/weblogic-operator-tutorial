@@ -52,8 +52,13 @@ kubectl apply -f /u01/domain.yaml
 ```
 You can immediately check the status of your servers/pods:
 ```
-kubectl get po -n sample-domain1-ns
+$ kubectl get po -n sample-domain1-ns
+NAME                             READY     STATUS        RESTARTS   AGE
+sample-domain1-admin-server      1/1       Terminating   0          12h
+sample-domain1-managed-server1   1/1       Running       0          12h
 ```
 Wait till the restart completes and all pods are ready then check your web application again.
 
 `http://ANY_NODE_PUBLIC_IP_ADDRESS:30305/opdemo/?dsname=testDatasource`
+
+![](images/update.application/004.check.changes.png)
