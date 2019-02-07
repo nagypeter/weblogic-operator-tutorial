@@ -94,6 +94,8 @@ Set the following values:
 |imagePullSecrets: <br>- name:|imagePullSecrets: <br>- name: ocirsecret||
 |webLogicCredentialsSecret: <br>&nbsp;name:|webLogicCredentialsSecret: <br>&nbsp;name: sample-domain1-weblogic-credentials||
 
+Your `domain.yaml` should be almost the same what is [available in the imported tutorial repository (click the link if you want to compare and check)](https://github.com/nagypeter/weblogic-operator-tutorial/blob/master/k8s/domain.yaml).
+
 Save the changes and create domain resource using the apply command:
 ```
 kubectl apply -f /u01/domain.yaml

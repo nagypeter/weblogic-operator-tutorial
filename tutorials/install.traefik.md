@@ -8,11 +8,13 @@ This tutorial demonstrates how to install the [Traefik](https://traefik.io/) ing
 
 #### Install the Traefik operator with a Helm chart ####
 
+---
 Note! If you don't use the prepared VirtualBox desktop environment first clone the WebLogic Operator git repository to your desktop.
 ```
 git clone https://github.com/oracle/weblogic-kubernetes-operator.git  -b 2.0
 ```
-Change to the WebLogic Operator local Git repository folder.
+---
+Change to your WebLogic Operator local Git repository folder.
 
     cd /u01/content/weblogic-kubernetes-operator/
 

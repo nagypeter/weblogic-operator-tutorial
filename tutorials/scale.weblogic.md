@@ -13,16 +13,7 @@ The operator provides several ways to initiate scaling of WebLogic clusters, inc
 
 #### Scaling WebLogic cluster using `kubectl`  ####
 
-The easiest way to scale a WebLogic cluster in Kubernetes is to simply edit the replicas property within a domain resource. This can be done by using the `kubectl` command-line interface for running commands against Kubernetes clusters. More specifically, you can modify the domain resource directly by using the `kubectl edit` command.
-```
-kubectl edit domain DOMAIN_UID -n DOMAIN_NAMESPACE
-```
-In case if you use default settings the syntax is:
-```
-kubectl edit domain sample-domain1 -n sample-domain1-ns
-```
-
-In this case you edit directly the runtime domain resource definition. To retain changes edit the *domain.yaml* and apply changes using `kubectl`. Use your favourite editor to open *domain.yaml*.
+The easiest way to scale a WebLogic cluster in Kubernetes is to simply edit the replicas property within a domain resource.  To retain changes edit the *domain.yaml* and apply changes using `kubectl`. Use your favourite editor to open *domain.yaml*.
 
 Find the following part:
 ```
@@ -47,4 +38,17 @@ Soon the terminating pod will disappear. You can also check the managed server s
 
 ![alt text](images/scaling/check.on.console.png)
 
+You can edit directly the existing (running) domain resource file by using the `kubectl edit` command. In this case your `domain.yaml` available on your desktop will not reflect the changes of the running domain's resource.
+```
+kubectl edit domain DOMAIN_UID -n DOMAIN_NAMESPACE
+```
+In case if you use default settings the syntax is:
+```
+kubectl edit domain sample-domain1 -n sample-domain1-ns
+```
+It will use `vi` like editor.
+
+---
 Note! Do not use the console to scale the cluster. The operator controls this operation. Use the operator's options to scale your cluster deployed on Kubernetes.
+
+---
