@@ -18,7 +18,7 @@ Helm - `helm`
 
 https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-windows-amd64.tar.gz
 
-You need unzip and type: `helm init`
+You need to unzip and when you have access(!) to your Kubernetes cluster (`kubectl` configured - follow the tutorial) then type: `helm init`
 
 ---
 
