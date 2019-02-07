@@ -60,7 +60,7 @@ spec:
   # - "ADMIN_ONLY" will start up only the administration server (no managed servers will be started)
   # - "IF_NEEDED" will start all non-clustered servers, including the administration server and clustered servers up to the replica count
   serverStartPolicy: "IF_NEEDED"
-  restartVersion: "applicationV2"
+  # restartVersion: "applicationV2"
   serverPod:
     # an (optional) list of environment variable to be set on the servers
     env:
