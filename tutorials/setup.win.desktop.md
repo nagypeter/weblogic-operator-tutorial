@@ -1,5 +1,16 @@
 # Oracle WebLogic Operator Tutorial #
 
+To try to fix Win10 to run VirtualBox image run the following command in cmd:
+```
+bcdedit /set hypervisorlaunchtype off
+```
+and run the follofing command in PowerShell (with Admin right)
+```
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Hypervisor
+```
+
+If the image still doesn't run then follow this tutorial below and install necessary tools.
+
 ### Setup Windows 10 desktop ###
 
 OCI CLI - `oci`
