@@ -41,8 +41,8 @@ After the proxy configuration double click the **Update** icon and wait until th
 
 0. [Setup Oracle Kubernetes Engine instance on Oracle Cloud Infrastructure.](setup.oke.md)
 1. [Create Oracle Container Pipelines Application to Build Custom WebLogic Domain Image](build.weblogic.image.pipeline.md)
-2. [Install Traefik Software Loadbalancer](install.traefik.md)
-3. [Install WebLogic Operator](install.operator.md)
+2. [Install WebLogic Operator](install.operator.md)
+3. [Install Traefik Software Loadbalancer](install.traefik.md)
 4. [Deploy WebLogic Domain](deploy.weblogic.md)
 5. [Scaling WebLogic Cluster](scale.weblogic.md)
 6. [Override JDBC Datasource parameters](override.jdbc.md)
