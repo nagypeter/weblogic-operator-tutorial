@@ -6,13 +6,13 @@ Oracle Cloud Infrastructure Container Engine for Kubernetes is a fully-managed, 
 
 [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 
-To create Container Engine for Kubernetes (OKE) the following steps needs to be completed:
+To create Container Engine for Kubernetes (OKE) the following steps need to be completed:
 
 - Create network resources (VCN, Subnets, Security lists, etc.)
 - Create Cluster.
 - Create NodePool.
 
-This tutorial shows the simplest way the *Quick Start* feature what creates and configures all the necessary resources for a 3 Kubernetes node cluster. All the nodes will be deployed in different Availability Domain to ensure high availability.
+This tutorial shows the simplest way the *Quick Start* feature creates and configures all the necessary resources for a 3 Kubernetes node cluster. All the nodes will be deployed in different Availability Domains to ensure high availability.
 
 More information about OKE and custom cluster deployment:
 
@@ -38,7 +38,7 @@ You have to land on the OCI console page.
 
 A service policy allows OKE to create resources in tenancy such as compute. An OKE resource policy or policies enables you to regulate which groups in your tenancy can do what with the OKE API.
 
-Optionally create more resource policy if you want to regulate which groups can access different parts of the OKE service.
+Optionally create more resource policies if you want to regulate which groups can access different parts of the OKE service.
 
 Open the navigation menu. Under **Identity**, click **Policies**.
 
@@ -52,7 +52,7 @@ Enter the following:
 
 - **Name:** A unique name for the policy. The name must be unique across all policies in your tenancy. You cannot change this later.
 - **Description:** A friendly description.
-- **Policy Versioning:** Select **Keep Policy Current**. It ensures that the policy stay current with any future changes to the service's definitions of verbs and resources.
+- **Policy Versioning:** Select **Keep Policy Current**. It ensures that the policy stays current with any future changes to the service's definitions of verbs and resources.
 - **Statement:** A policy statement. It MUST be: `allow service OKE to manage all-resources in tenancy`
 - **Tags:** Don't apply tags.
 
@@ -62,7 +62,7 @@ Click **Create**.
 
 #### Create OKE (Oracle Container Engine for Kubernetes) cluster ####
 
-*Quick Create* feature using default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
+*Quick Create* feature uses default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
 In the Console, open the navigation menu. Under *Solutions, Platform and Edge*, go to *Developer Services* and click **Container Clusters (OKE)**.
 
@@ -74,22 +74,22 @@ On the Cluster List page, click **Create Cluster**.
 
 Specify the following configuration details:
 
-- **Name**: The name of the new cluster. For examplethe default *cluster1*
-- **Kubernetes Version**: The version of Kubernetes to run on the master nodes and worker nodes of the cluster. Select the latest *v1.11.5* version.
+- **Name**: The name of the new cluster. For example the default *cluster1*
+- **Kubernetes Version**: The Kubernetes version that runs on the master nodes and worker nodes of the cluster. Select the latest *v1.11.5* version.
 - Select **Quick Create** to create a new cluster with default settings, along with new network resources for the new cluster.
 The Create Virtual Cloud Network panel shows the network resources that will be created for you by default, namely a VCN, two load balancer subnets, and three worker node subnets.
 
 	The Create Node Pool panel shows the fixed properties of the first node pool in the cluster that will be created for you:
 
 	- the name of the node pool (always pool1)
-	- the compartment in which the node pool will be created (always
-	- the same as the one in which the new network resources will reside)
-	- the version of Kubernetes that will run on each worker node in the node pool (always the same as the version specified for the master nodes) the image to use on each node in the node pool
+	- the compartment in which the node pool will be created (always the same as the one in which the new network resources will reside)
+	- the version of Kubernetes that will run on each worker node in the node pool (always the same as the version specified for the master nodes) 
+        - the image to use on each node in the node pool
 
 The Create Node Pool panel also contains some node pool properties that you can change.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by Container Engine for Kubernetes. Select the available *VM.Standard2.1*
 - **Quantity per Subnet**: The number of worker nodes to create for the node pool in each subnet. Set *1*
-- **Public SSH Key**: The public key portion of the key pair you will use for SSH access to each node in the node pool. Use the following public ssh key (The private key is provided in the VirtualBox environment.):
+- **Public SSH Key**: The public key portion of the key pair you will use for SSH access to each node in the node pool. Use the following public ssh key (the private key is provided in the VirtualBox environment.):
 
 		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDT53WIGqHj+7FXJiRRCmrxCmE+qJvjrJSASinhs8/aEEm4XhsSDy67gXSovrkjSq//kisET6wmOymKCEF2zQGxyZY/rBCLOc/of1sm2Yoo5S1bNvKJQbgjN9LPz0EXOs3qGThUKQKsthQOeWgZGoUiaLplskGBVmXQ+3WT8vtNZxJ9fbCp89fRGyUzF9fSCclpp7eAqirSOhgAoK8D6S1138kxxTwpc32A4FRqrTaqaWlioCjzxRFTnygSnOEgPv2Go7CPSsFghm2XYVyAtsftIEFyphVSJ66CbfjRw+L9b6v8/fRzA0UBZwtLxECO6WSXbGNKhTXJ3T0CKXXRgzCH
 - **Kubernetes Dashboard Enabled**: leave the default true.
@@ -109,7 +109,7 @@ When you create a cluster, you need to download a Kubernetes configuration file 
 
 ##### Configure OCI CLI #####
 
-Before using the CLI, you have to create a config file that contains the required credentials for working with Oracle Cloud Infrastructure. To have this config the CLI walk you through the first-time setup process, step by step, use the oci setup config command. The command prompts you for the information required for the config file and the API public/private keys. The setup dialog generates an API key pair and creates the config file.
+Before using the CLI, you have to create a config file that contains the required credentials for working with Oracle Cloud Infrastructure. To have this config the CLI walks you through the first-time setup process, step by step, use the oci setup config command. The command prompts you for the information required for the config file and the API public/private keys. The setup dialog generates an API key pair and creates the config file.
 
 Before you start the setup collect the necessary information using your OCI console.
 
@@ -161,13 +161,13 @@ Enter to accept default directory location. Provide your user and tenancy OCIDs.
 	Enter a user OCID: <YOUR_USER_OCID>
 	Enter a tenancy OCID: <YOUR_TENANCY_OCID>
 
-Enter your region. You can see in the console (browser) at the top right area. It has be *eu-frankfurt-1*. If not type the proper region code.
+Enter your region. You can see in the console (browser) at the top right area. It has to be *eu-frankfurt-1*, if not type the proper region code.
 
 	Enter a region (e.g. eu-frankfurt-1, uk-london-1, us-ashburn-1, us-phoenix-1): <YOUR_REGION>
 
 Generate new API signing key. For the location accept default.
 
-	Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]: Y
+	Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/N]: Y
 
 	Enter a directory for your keys to be created [/home/oracle/.oci]:
 	Enter a name for your key [oci_api_key]:
@@ -179,7 +179,7 @@ Generate new API signing key. For the location accept default.
 
 ##### Upload the public key of the API signing key pair #####
 
-The final step to complete the CLI setup to upload your freshly generated public key through the console. The public key if you haven't changed during setup can be found in the `/home/oracle/.oci/` directory and it's name `oci_api_key_public.pem`. Using your favourite way copy its content to the clipboard. While viewing user details click **Add Public Key**.
+The final step to complete the CLI setup to upload your freshly generated public key through the console. The public key if you haven't changed it during setup can be found in the `/home/oracle/.oci/` directory and it's name `oci_api_key_public.pem`. Using your favourite way copy its content to the clipboard. While viewing user details click **Add Public Key**.
 
 ![alt text](images/oke/012.user.settings.png)
 
@@ -205,7 +205,7 @@ Click **Access Kubeconfig**.
 
 ![alt text](images/oke/015.access.kubeconfig.png)
 
-A dialog pops up which contains the customized OCI command what you need to execute to create Kubernetes configuration file.
+A dialog pops up which contains the customized OCI command that you need to execute to create Kubernetes configuration file.
 
 ![alt text](images/oke/016.oci.cluster.download.script.png)
 
@@ -214,11 +214,11 @@ Copy and execute the commands on your desktop where OCI CLI was configured. For 
 	$ mkdir -p $HOME/.kube
 	$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.eu-frankfurt-1.aaaaaaaaaezwenlfgm4gkmzxha2tamtcgjqwmoldmu3tcnlfgc2tcyzzmrqw --file $HOME/.kube/config --region eu-frankfurt-1
 
-Note! `kubectl` by default try to use `$HOME/.kube/config` configuration file. If you save to different location and use different filename don't forget to set the `KUBECONFIG`  variable to the configuration file. E.g.:
+Note! For `kubectl` try to use by defult `$HOME/.kube/config` configuration file. If you save it to a different location and use different filename, don't forget to set the `KUBECONFIG`  variable to the configuration file. E.g.:
 
 	export KUBECONFIG=another_folder_path/kubernetes_config_file_name
 
-Now check the `kubectl` for example using the `get node` command:
+Now check that `kubectl` is working, for example using the `get node` command:
 
 	$ kubectl get node
 	NAME            STATUS    ROLES     AGE       VERSION
