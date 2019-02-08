@@ -6,6 +6,12 @@ An operator is an application-specific controller that extends Kubernetes to cre
 
 #### Install the Operator operator with a Helm chart ####
 
+---
+Note! If you don't use the prepared VirtualBox desktop environment first clone the WebLogic Operator git repository to your desktop.
+```
+git clone https://github.com/oracle/weblogic-kubernetes-operator.git  -b 2.0
+```
+---
 In order to use Helm to install and manage the operator, you need to ensure that the service account that Tiller uses
 has the `cluster-admin` role.  The default would be `default` in namespace `kube-system`.  You can give that service
 account the necessary permissions with this command:
