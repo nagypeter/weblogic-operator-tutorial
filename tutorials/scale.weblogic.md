@@ -22,7 +22,7 @@ clusters:
   serverStartState: "RUNNING"
   replicas: 2
 ```
-Modify `replicas` to 1 and save changes. Apply the changes using `kubectl`:
+Modify `replicas` to 3 and save changes. Apply the changes using `kubectl`:
 ```
 kubectl apply -f /u01/domain.yaml
 ```
@@ -32,13 +32,14 @@ kubectl get po -n sample-domain1-ns
 NAME                             READY     STATUS        RESTARTS   AGE
 sample-domain1-admin-server      1/1       Running       0          57m
 sample-domain1-managed-server1   1/1       Running       0          56m
-sample-domain1-managed-server2   1/1       Terminating   0          56m
+sample-domain1-managed-server2   1/1       Running       0          55m
+sample-domain1-managed-server3   1/1       Running       0          1m
 ```
-Soon the terminating pod will disappear. You can also check the managed server scaling action using the WebLogic Administration console:
+Soon the managed server 3 will appear and will be ready within a few minutes. You can also check the managed server scaling action using the WebLogic Administration console:
 
 ![alt text](images/scaling/check.on.console.png)
 
-You can edit directly the existing (running) domain resource file by using the `kubectl edit` command. In this case your `domain.yaml` available on your desktop will not reflect the changes of the running domain's resource.
+Note! You can edit directly the existing (running) domain resource file by using the `kubectl edit` command. In this case your `domain.yaml` available on your desktop will not reflect the changes of the running domain's resource.
 ```
 kubectl edit domain DOMAIN_UID -n DOMAIN_NAMESPACE
 ```
