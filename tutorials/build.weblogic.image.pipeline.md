@@ -137,7 +137,7 @@ Click the **Worklflow** tab and then **Add new pipeline** to enable pipeline def
 
 ![alt text](images/build.weblogic.pipeline/009.workflow.add.pipeline.png)
 
-Enter the name of the pipeline for example *build-domain-in-home-image*. Enter the exactly same name of the pipeline definition can be found in the *wercker.yml*. It is *build-domain-in-home-image*. Click **Create**.
+Enter the name of the pipeline and the "YML Pipeline Name" as *build-domain-in-home-image*. Please enter exactly this name - because this name is hardcoded in the *wercker.yml*. Click **Create**.
 
 ![alt text](images/build.weblogic.pipeline/010.add.pipeline.png)
 
