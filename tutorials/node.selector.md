@@ -54,7 +54,7 @@ node/130.61.52.240 labeled
 $ kubectl label nodes 130.61.84.41 wlservers2=true
 node/130.61.84.41 labeled
 ```
-###### Modify domain resource defintion ######
+###### Modify domain resource definition ######
 
 Open your `domain.yaml` in text editor and find the `adminServer:` entry and insert a new property where you can define the placement of the admin server:
 ```
@@ -96,7 +96,7 @@ The operator according to the changes will start to relocate servers. Poll the p
 $ kubectl get po -n sample-domain1-ns -o wide
 NAME                             READY     STATUS        RESTARTS   AGE       IP            NODE            NOMINATED NODE
 sample-domain1-admin-server      1/1       Running       0          3m        10.244.2.36   130.61.84.41    <none>
-sample-domain1-managed-server1   1/1       Terminating   0          55m       10.244.1.8    130.61.52.240   <none>
+sample-domain1-managed-server1   1/1       Running       0          55m       10.244.1.8    130.61.52.240   <none>
 sample-domain1-managed-server2   1/1       Running       0          56s       10.244.1.9    130.61.52.240   <none>
 sample-domain1-managed-server3   1/1       Running       0          2m        10.244.2.37   130.61.84.41    <none>
 ```

@@ -48,3 +48,4 @@ After the proxy configuration double click the **Update** icon and wait until th
 6. [Override JDBC Datasource parameters](override.jdbc.md)
 7. [Update Web Application](update.application.md)
 8. [Assigning WebLogic Pods to Nodes](node.selector.md)
+9. [Assigning WebLogic Pods to Licensed Nodes](node.selector.license.md)
