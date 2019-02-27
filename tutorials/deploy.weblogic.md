@@ -21,7 +21,8 @@ kubectl label secret sample-domain1-weblogic-credentials \
   weblogic.domainUID=sample-domain1 \
   weblogic.domainName=sample-domain1
 ```
-Create OCI image Registry secret to allow Kubernetes to pull you custome WebLogic image. Replace the registry server region code, username and auth token respectively. (WARNING!!! - be careful about username - docker-username parameter should have a value of YOUR_TANACY_NAME/YOUR_OCIR_USERNAME - don't skip YOUR_TENANCY_NAME please)
+Create OCI image Registry secret to allow Kubernetes to pull you custome WebLogic image. Replace the registry server region code, username and auth token respectively.
+WARNING!!! - be careful about username - docker-username parameter should have a value of YOUR_TENACY_NAME/YOUR_OCIR_USERNAME - don't skip YOUR_TENANCY_NAME please.
 ```
 kubectl create secret docker-registry ocirsecret \
   -n sample-domain1-ns \
@@ -116,23 +117,9 @@ sample-domain1-managed-server2   0/1       Running   0          1m        10.244
 ```
 You have to see three running pods similar to the result above. If you don't see all the running pods please wait and check periodically. The whole domain deployment may take up to 2-3 minutes depending on the compute shapes.
 
-The WebLogic Administration server console is exposed to the external world using NodePort. Which means you can use any of the node's public IP address as host name. The NodePort definition can be found in the domain resource defintion (*domain.yaml*) which default is 30701 if you haven't modified.
+In order to access any application or admin console deployed on WebLogic you have to configure *Traefik* ingress. OCI Load balancer is already assigned during *Traefik* install in the previous step.
 
-Construct the Administration Console's url and open in a browser:
-
-`http://ANY_NODE_PUBLIC_IP_ADDRESS:30701/console`
-
-Enter admin user credentials (weblogic/welcome1) and click **Login**
-
-![](images/deploy.domain/weblogic.console.login.png)
-
-!Please note in this use case the use of Administration Console is just for demo/test purposes because domain configuration persisted in pod which means after the restart the original values (baked into the image) will be used again. To override certain configuration parameters - to ensure image portability - follow the override part of this tutorial.
-
-#### Test the demo Web Application ####
-
-In order to access any application deployed on WebLogic you have to configure Traefik ingress.
-
-As a simple solution the best is to configure path routing which will route the traffic external traffic through Traefik to domain cluster address.
+As a simple solution the best is to configure path routing which will route the external traffic through *Traefik* to domain cluster address.
 
 Execute the following ingress resource definition:
 ```
@@ -153,15 +140,38 @@ spec:
         backend:
           serviceName: sample-domain1-cluster-cluster-1
           servicePort: 8001
+      - path: /console
+        backend:
+          serviceName: sample-domain1-admin-server
+          servicePort: 7001          
 EOF          
 ```
 
-Please note the namespace, serviceName and servicePort definition. These are the properties of the domain resource deployed on Kubernetes.
+Please note the two backends and the namespace, serviceName, servicePort definitions. The first backend is the domain cluster service to reach the application at the root context path. The second is for the admin console which is a different service.
 
-Once the Ingress has been created construct the URL of the application based on the following pattern:
+Once the Ingress has been created construct the URL of the admin console based on the following pattern:
 
-`http://ANY_NODE_PUBLIC_IP_ADDRESS:30305/opdemo/?dsname=testDatasource`
+`http://EXTERNAL-IP/console`
+
+The EXTERNAL-IP was determined during Traefik install. If you forgot to note the execute the following command to get the public IP address:
+```
+$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+129.213.172.44
+```
+Construct the Administration Console's url and open in a browser:
+
+Enter admin user credentials (weblogic/welcome1) and click **Login**
+
+![](images/deploy.domain/weblogic.console.login.png)
+
+!Please note in this use case the use of Administration Console is just for demo/test purposes because domain configuration persisted in pod which means after the restart the original values (baked into the image) will be used again. To override certain configuration parameters - to ensure image portability - follow the override part of this tutorial.
+
+#### Test the demo Web Application ####
+
+The URL pattern of the sample application is the following:
+
+`http://EXTERNAL-IP/opdemo/?dsname=testDatasource`
 
 ![](images/deploy.domain/webapp.png)
 
-Refresh the page and notice the hostname changes. It reflects the managed server's name which responds to the request. You should see the loadbalancing between the two managed server.
+Refresh the page and notice the hostname changes. It reflects the managed server's name which responds to the request. You should see the load balancing between the two managed servers.
