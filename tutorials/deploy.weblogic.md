@@ -119,7 +119,7 @@ You have to see three running pods similar to the result above. If you don't see
 
 In order to access any application or admin console deployed on WebLogic you have to configure *Traefik* ingress. OCI Load balancer is already assigned during *Traefik* install in the previous step.
 
-As a simple solution the best is to configure path routing which will route the external traffic through *Traefik* to domain cluster address.
+As a simple solution the best is to configure path routing which will route the external traffic through *Traefik* to domain cluster address or admin server's console.
 
 Execute the following ingress resource definition:
 ```
