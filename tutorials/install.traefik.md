@@ -19,6 +19,7 @@ To install the Traefik operator in the traefik namespace with the provided sampl
     --namespace traefik \
     --values kubernetes/samples/charts/traefik/values.yaml  \
     --set "kubernetes.namespaces={traefik}" \
+    --set "serviceType=LoadBalancer" \    
     --wait
 
 The output should be similar:
@@ -38,9 +39,9 @@ The output should be similar:
      traefik-operator  23s
 
      ==> v1/Service
-     NAME                        TYPE       CLUSTER-IP     EXTERNAL-IP  PORT(S)                     AGE
-     traefik-operator-dashboard  ClusterIP  10.96.44.36    <none>       80/TCP                      23s
-     traefik-operator            NodePort   10.96.133.236  <none>       80:30305/TCP,443:30443/TCP  23s
+     NAME                        TYPE          CLUSTER-IP     EXTERNAL-IP     PORT(S)                     AGE
+     traefik-operator-dashboard  ClusterIP     10.96.202.131  <none>          80/TCP                      23s
+     traefik-operator            LoadBalancer  10.96.154.112  129.213.172.44  80:32396/TCP,443:32736/TCP  23s
 
      ==> v1beta1/Ingress
      NAME                        HOSTS                ADDRESS  PORTS  AGE
@@ -69,30 +70,46 @@ The output should be similar:
 
      NOTES:
 
-     1. Traefik is listening on the following ports on the host machine:
+     1. Get Traefik's load balancer IP/hostname:
 
-          http - 30305
-          https - 30443
+          NOTE: It may take a few minutes for this to become available.
 
-     2. Configure DNS records corresponding to Kubernetes ingress resources to point to the NODE_IP/NODE_HOST
+          You can watch the status by running:
 
-The Traefik installation is basically done. You can verify the Kubernetes resources:
+              $ kubectl get svc traefik-operator --namespace traefik -w
 
-    $ kubectl get po -n traefik -o wide
-    NAME                                READY     STATUS    RESTARTS   AGE       IP           NODE           NOMINATED NODE
-    traefik-operator-8486f75bbd-q6pz5   1/1       Running   0          20m       10.244.2.2   130.61.84.41   <none>
+          Once 'EXTERNAL-IP' is no longer '<pending>':
 
-Also the `helm` charts:
+              $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+
+     2. Configure DNS records corresponding to Kubernetes ingress resources to point to the load balancer IP/hostname found in step 1
+
+The Traefik installation is basically done. Verify the Traefik (Loadbalancer) services:
+```
+kubectl get service -n traefik
+NAME                         TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)                      AGE
+traefik-operator             LoadBalancer   10.96.154.112   129.213.172.44   80:32396/TCP,443:32736/TCP   2h
+traefik-operator-dashboard   ClusterIP      10.96.202.131   <none>           80/TCP                       2h
+```
+Please note the EXTERNAL-IP of the *traefik-operator* service. This is the Public IP address of the Loadbalancer what you will use to open the WebLogic admin console and the sample application.
+
+To print only the Public IP address you can execute this command:
+```
+$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+129.213.172.44
+```
+
+Verify the `helm` charts:
 
     $ helm list
     NAME            	REVISION	UPDATED                 	STATUS  	CHART         	NAMESPACE
     traefik-operator	1       	Mon Feb  4 10:58:41 2019	DEPLOYED	traefik-1.59.2	traefik  
 
-Or you can hit the Traefik's dashboard using `curl`. Use the node's IP address from the above result:
+You can also hit the Traefik's dashboard using `curl`. Use the EXTERNAL-IP address from the result above:
 
-    curl -H 'host: traefik.example.com' http://NODE_IP_ADDRESS:30305/
+    curl -H 'host: traefik.example.com' http://EXTERNAL_IP_ADDRESS
 
 For example:
 
-    $ curl -H 'host: traefik.example.com' http://130.61.84.41:30305/
+    $ curl -H 'host: traefik.example.com' http://129.213.172.44
     <a href="/dashboard/">Found</a>.
