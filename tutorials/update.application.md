@@ -63,6 +63,6 @@ The operator now performs a rolling server restart one by one. The first one is 
 
 During the rolling restart check your web application periodically. If the responding server already restarted then you have to see the change (green fonts) you made on the application. If the server is not yet restarted then it still serves the old version of the application.
 
-`http://ANY_NODE_PUBLIC_IP_ADDRESS:30305/opdemo/?dsname=testDatasource`
+`http://EXTERNAL-IP/opdemo/?dsname=testDatasource`
 
 ![](images/update.application/004.check.changes.png)

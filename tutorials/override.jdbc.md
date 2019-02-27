@@ -104,7 +104,7 @@ Please note values (*username=scott2*, *url=jdbc:oracle:thin:@test.db.example.co
 
 Before applying changes check the current JDBC parameters using the demo Web Application. Open using the following URL pattern:
 
-`http://ANY_NODE_PUBLIC_IP_ADDRESS:30305/opdemo/?dsname=testDatasource`
+`http://EXTERNAL-IP/opdemo/?dsname=testDatasource`
 
 ![](images/override/original.jdbc.properties.png)
 
@@ -160,7 +160,7 @@ sample-domain1-managed-server1   1/1       Running   0          1m
 
 Now check the expected values of the JDBC datasource using the demo Web Application again:
 
-`http://ANY_NODE_PUBLIC_IP_ADDRESS:30305/opdemo/?dsname=testDatasource`
+`http://EXTERNAL-IP/opdemo/?dsname=testDatasource`
 
 ![](images/override/updated.jdbc.properties.png)
 

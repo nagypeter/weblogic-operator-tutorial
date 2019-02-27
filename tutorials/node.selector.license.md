@@ -21,7 +21,7 @@ NAME             STATUS    ROLES     AGE       VERSION
 130.61.84.41     Ready     node      11d       v1.11.5
 ```
 
-In case of OKE the node name is basically the public IP address of the node.
+In case of OKE the node name can be the Public IP address of the node or the subnet's CIDR Block's first IP address. But obviously a unique string which identifies the node.
 
 Now check the current pod allocation using the detailed pod information `kubectl get pod -n sample-domain1-ns -o wide`:
 ```
