@@ -16,3 +16,7 @@ spec:
         backend:
           serviceName: sample-domain1-cluster-cluster-1
           servicePort: 8001
+      - path: /console
+        backend:
+          serviceName: sample-domain1-admin-server
+          servicePort: 7001
