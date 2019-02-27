@@ -1,0 +1,16 @@
+user.ocid=
+okeclustername=myokecluster
+tfvars.filename=myokeclustertf
+region=
+tenancy.ocid=
+compartment.ocid=
+compartment.name=QualityAssurance
+ociapi.pubkey.fingerprint=
+ocipk.path=
+vcn.cidr.prefix=10.1
+vcn.cidr=10.1.0.0/16
+nodepool.shape=VM.Standard2.1
+nodepool.imagename=Oracle-Linux-7.5
+k8s.version=v1.11.5
+nodepool.ssh.pubkey=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDT53WIGqHj+7FXJiRRCmrxCmE+qJvjrJSASinhs8/aEEm4XhsSDy67gXSovrkjSq//kisET6wmOymKCEF2zQGxyZY/rBCLOc/of1sm2Yoo5S1bNvKJQbgjN9LPz0EXOs3qGThUKQKsthQOeWgZGoUiaLplskGBVmXQ+3WT8vtNZxJ9fbCp89fRGyUzF9fSCclpp7eAqirSOhgAoK8D6S1138kxxTwpc32A4FRqrTaqaWlioCjzxRFTnygSnOEgPv2Go7CPSsFghm2XYVyAtsftIEFyphVSJ66CbfjRw+L9b6v8/fRzA0UBZwtLxECO6WSXbGNKhTXJ3T0CKXXRgzCH
+terraform.installdir=/usr/local/bin/terraform

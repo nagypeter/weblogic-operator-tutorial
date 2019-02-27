@@ -26,7 +26,9 @@ spec:
   domainHomeInImage: true
 
   # Update this with the name of the Docker image that will be used to run your domain:
-  image: "YOUR_OCI_REGION_CODE.ocir.io/YOUR_TENANCY_NAME/weblogic-operator-tutorial:latest"
+  #image: "YOUR_OCI_REGION_CODE.ocir.io/YOUR_TENANCY_NAME/weblogic-operator-tutorial:latest"
+  #image: "fra.ocir.io/johnpsmith/weblogic-operator-tutorial:latest"
+  image: "phx.ocir.io/weblogick8s/weblogic-operator-tutorial:latest"
 
   # imagePullPolicy defaults to "Always" if image version is :latest
   imagePullPolicy: "Always"
