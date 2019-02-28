@@ -44,7 +44,7 @@ Open the navigation menu. Under **Identity**, click **Policies**.
 
 ![alt text](images/oke/004.oci.console.png)
 
-A list of the policies in the compartment you're viewing is displayed. If you want to attach the policy to a compartment other than the one you're viewing, select the desired compartment from the list on the left. Click **Create Policy**.
+Select on left hand side menu a "root" compartment for your account (see screenshot). A list of the policies in the compartment you're viewing is displayed. If you want to attach the policy to a compartment other than the one you're viewing, select the desired compartment from the list on the left. Click **Create Policy**.
 
 ![alt text](images/oke/005.policies.png)
 
