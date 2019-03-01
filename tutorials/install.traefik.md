@@ -19,8 +19,7 @@ To install the Traefik operator in the traefik namespace with the provided sampl
     --namespace traefik \
     --values kubernetes/samples/charts/traefik/values.yaml  \
     --set "kubernetes.namespaces={traefik}" \
-    --set "serviceType=LoadBalancer" \    
-    --wait
+    --set "serviceType=LoadBalancer" 
 
 The output should be similar:
 
