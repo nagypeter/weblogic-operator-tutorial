@@ -77,15 +77,13 @@ Now you are ready to pull the  image on Docker enabled host after authenticating
 
 #### Import WebLogic Operator Tutorial's source repository into your Github repository ####
 
-In this step you will import the tutorial's source repository. The source repository contains the demo application deployed on top of WebLogic server, configuration yaml to quickly create Oracle Container Pipelines(CI/CD) application to build custom WebLogic image and Kubernetes configuration files to deploy the WebLogic Operator and custom WebLogic image.
+In this step you will fork the tutorial's source repository. The source repository contains the demo application deployed on top of WebLogic server, configuration yaml to quickly create Oracle Container Pipelines(CI/CD) application to build custom WebLogic image and few additional Kubernetes configuration files to deploy the custom WebLogic image.
 
-Sign in to [https://github.com](https://github.com) using your account and select **Import repository**.
+Open the *https://github.com/nagypeter/weblogic-operator-tutorial.git* repository in your browser. Click the **Fork** button at the left top area. Sign in to github.com if necessary.
 
-![alt text](images/build.weblogic.pipeline/001.import.repository.png)
+![alt text](images/build.weblogic.pipeline/001.fork.repository.png)
 
-Enter or copy the *https://github.com/nagypeter/weblogic-operator-tutorial.git* repository address into old repository's clone URL and choose a repository name e.g. *weblogic-operator-tutorial* for the new one. Leave the repository public. Click **Begin Import** and wait till the import is ready.
-
-![alt text](images/build.weblogic.pipeline/002.begin.import.png)
+Wait until the fork process is complete.
 
 #### Create Oracle Container Pipelines Application to build custom WebLogic Docker container including demo application ####
 
