@@ -75,7 +75,7 @@ On the Cluster List page, click **Create Cluster**.
 Specify the following configuration details:
 
 - **Name**: The name of the new cluster. For example the default *cluster1*
-- **Kubernetes Version**: The Kubernetes version that runs on the master nodes and worker nodes of the cluster. Select the latest *v1.11.5* version.
+- **Kubernetes Version**: The Kubernetes version that runs on the master nodes and worker nodes of the cluster. Select the latest version.
 - Select **Quick Create** to create a new cluster with default settings, along with new network resources for the new cluster.
 The Create Virtual Cloud Network panel shows the network resources that will be created for you by default, namely a VCN, two load balancer subnets, and three worker node subnets.
 
