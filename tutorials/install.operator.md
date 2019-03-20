@@ -75,8 +75,7 @@ helm install kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
   --set image=oracle/weblogic-kubernetes-operator:2.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
-  --set "domainNamespaces={}" \
-  --wait
+  --set "domainNamespaces={}"
 ```
 The result has to be similar:
 ```
