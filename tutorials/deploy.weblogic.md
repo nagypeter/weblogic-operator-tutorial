@@ -37,7 +37,7 @@ $ kubectl create secret docker-registry ocirsecret \
   -n sample-domain1-ns \
   --docker-server=fra.ocir.io \
   --docker-username='johnpsmith/oracleidentitycloudservice/john.p.smith@example.com' \
-  --docker-password='mypassword' \
+  --docker-password='my_auth_token_generated_earlier' \
   --docker-email=john.p.smith@example.com
   secret "ocirsecret" created
 ```
