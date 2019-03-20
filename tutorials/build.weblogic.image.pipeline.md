@@ -43,7 +43,7 @@ Enter a description which allows you to easily identify the allocated token late
 
 ![alt text](images/ocir/002.generate.token.png)
 
-Now copy and store(!) your generated token for later usage. Click **Close**.
+Now **copy and store(!)** your generated token for later usage. Click **Close**.
 
 ![alt text](images/ocir/003.copy.token.png)
 
