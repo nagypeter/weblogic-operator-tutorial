@@ -224,7 +224,7 @@ Now check that `kubectl` is working, for example using the `get node` command:
 	130.61.60.127   Ready     node      16m       v1.11.5
 	130.61.72.48    Ready     node      16m       v1.11.5
 
-If you see the node's information the configuration was successful. Probably the Name will containt the IP that are non-routable
+If you see the node's information the configuration was successful. Probably the Name column will contain the IPs that are non-routable
 
 ##### Set up the RBAC policy for the OKE cluster #####
 
