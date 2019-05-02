@@ -89,9 +89,7 @@ The Create Virtual Cloud Network panel shows the network resources that will be 
 The Create Node Pool panel also contains some node pool properties that you can change.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by Container Engine for Kubernetes. Select the available *VM.Standard2.1*
 - **Quantity per Subnet**: The number of worker nodes to create for the node pool in each subnet. Set *1*
-- **Public SSH Key**: The public key portion of the key pair you will use for SSH access to each node in the node pool. Use the following public ssh key (the private key is provided in the VirtualBox environment.):
-
-		ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDT53WIGqHj+7FXJiRRCmrxCmE+qJvjrJSASinhs8/aEEm4XhsSDy67gXSovrkjSq//kisET6wmOymKCEF2zQGxyZY/rBCLOc/of1sm2Yoo5S1bNvKJQbgjN9LPz0EXOs3qGThUKQKsthQOeWgZGoUiaLplskGBVmXQ+3WT8vtNZxJ9fbCp89fRGyUzF9fSCclpp7eAqirSOhgAoK8D6S1138kxxTwpc32A4FRqrTaqaWlioCjzxRFTnygSnOEgPv2Go7CPSsFghm2XYVyAtsftIEFyphVSJ66CbfjRw+L9b6v8/fRzA0UBZwtLxECO6WSXbGNKhTXJ3T0CKXXRgzCH
+- **Public SSH Key**: Leave this field empty (screenshot contains some key - but for simplicity leave this empty)
 - **Kubernetes Dashboard Enabled**: leave the default true.
 - **Tiller (Helm) Enabled**: leave the default true.
 
@@ -226,7 +224,7 @@ Now check that `kubectl` is working, for example using the `get node` command:
 	130.61.60.127   Ready     node      16m       v1.11.5
 	130.61.72.48    Ready     node      16m       v1.11.5
 
-If you see the node's information the configuration was successful. Compare the name of the nodes to the Public IP addresses of the nodes information available on the web console.
+If you see the node's information the configuration was successful. Probably the Name will containt the IP that are non-routable
 
 ##### Set up the RBAC policy for the OKE cluster #####
 
