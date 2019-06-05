@@ -144,7 +144,7 @@ spec:
         backend:
           serviceName: sample-domain1-admin-server
           servicePort: 7001          
-EOF          
+EOF
 ```
 
 ---
