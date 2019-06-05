@@ -80,7 +80,7 @@ node/130.61.84.41 labeled
 ```
 Delete or turn into comment the entries you added for node assignment in your `domain.yaml` and apply:
 ```
-$ kubectl apply -f ~/git.repos/@nagypeter/weblogic-operator-tutorial/k8s/domain.yaml
+$ kubectl apply -f /u01/domain.yaml
 domain.weblogic.oracle/sample-domain1 configured
 ```
 The pod reallocation/restart can happen based on the scheduler decision.
