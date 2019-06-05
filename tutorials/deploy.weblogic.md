@@ -147,16 +147,6 @@ spec:
 EOF
 ```
 
----
-WARNING. If the ingress creation snippet above doesn't work then download as yaml file:
-```
-curl https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/master/k8s/traefik.path.route.yaml --output ~/traefik.path.route.yaml
-```
-Run `kubectl apply` to create:
-```
-kubectl apply -f ~/traefik.path.route.yaml
-```
----
 
 Please note the two backends and the namespace, serviceName, servicePort definitions. The first backend is the domain cluster service to reach the application at the root context path. The second is for the admin console which is a different service.
 
