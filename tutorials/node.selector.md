@@ -88,7 +88,7 @@ spec:
 ```
 Save the changes and apply the new domain resource definition.
 ```
-$ kubectl apply -f ~/git.repos/@nagypeter/weblogic-operator-tutorial/k8s/domain.yaml
+$ kubectl apply -f /u01/domain.yaml
 domain.weblogic.oracle/sample-domain1 configured
 ```
 The operator according to the changes will start to relocate servers. Poll the pod information and wait until the expected result:
