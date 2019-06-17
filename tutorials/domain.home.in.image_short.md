@@ -42,5 +42,6 @@ After the proxy configuration double click the **Update** icon and wait until th
 4. [Deploy WebLogic Domain](deploy.weblogic_short.md)
 5. [Scaling WebLogic Cluster](scale.weblogic.md)
 6. [Override JDBC Datasource parameters](override.jdbc.md)
-7. [Assigning WebLogic Pods to Nodes (scenario simulating cluster spanning 2 data center](node.selector.md)
-8. [Assigning WebLogic Pods to Nodes (scenario simulating licensing only the subset of the cluster](node.selector.license.md)
+7. [Updating deployed application by rolling restart to the new image](update.application_short.md)
+7. [Assigning WebLogic Pods to Nodes (scenario simulating cluster spanning 2 data center)](node.selector.md)
+8. [Assigning WebLogic Pods to Nodes (scenario simulating licensing only the subset of the cluster)](node.selector.license.md)
