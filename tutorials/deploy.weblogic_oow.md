@@ -92,7 +92,7 @@ You may now reach your consolein the following URL
 Where the EXTERNAL-IP represents IP assigned to Traefik service. Please execute the following command to get the public IP address:
 ```
 $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
-129.213.172.44
+129.213.172.95
 ```
 
 
