@@ -87,14 +87,14 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host:
+  - host: cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow
     http:
       paths:
-      - path: /cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>
+      - path: /
         backend:
           serviceName: sample-domain1-cluster-cluster-1
           servicePort: 8001
-      - path: /console<PLEASE REPLACE THIS PART WITH YOUR USER ID>
+      - path: /console
         backend:
           serviceName: sample-domain1-admin-server
           servicePort: 7001          
@@ -102,17 +102,27 @@ EOF
 ```
 
 
-Please note the two backends and the namespace, serviceName, servicePort definitions. The first backend is the domain cluster service to reach the application at the "clusterXXX" context path. The second is for the admin console which is a different service.
+Please note the two backends and the namespace, serviceName, servicePort definitions. The first backend is the domain cluster service to reach the application at the root context path. The second is for the admin console which is a different service.
 
-You may now reach your consolein the following URL
-
-`http://EXTERNAL-IP/console<PLEASE REPLACE THIS PART WITH YOUR USER ID>`
-
-Where the EXTERNAL-IP represents IP assigned to Traefik service. Please execute the following command to get the public IP address:
+We need to define entry in /etc/hosts file with proper virtual host name. To do so first you need collect IP assigned to Traefik service (Ingress type of LB) . Please execute the following command to get the public IP address:
 ```
 $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
 129.213.172.95
 ```
+
+Please edit /etc/hosts
+```
+$ vi /etc/hosts
+```
+
+and add the following line
+```
+129.213.172.95  cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow
+```
+where the first argument is the IP of Traefik service.
+
+Then access console by typing:
+`http://cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow/console`
 
 
 Enter admin user credentials (weblogic/welcome1) and click **Login**
@@ -125,7 +135,7 @@ Enter admin user credentials (weblogic/welcome1) and click **Login**
 
 The URL pattern of the sample application is the following:
 
-`http://EXTERNAL-IP/cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>/opdemo/?dsname=testDatasource`
+`http://cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow/opdemo/?dsname=testDatasource`
 
 ![](images/deploy.domain/webapp.png)
 
