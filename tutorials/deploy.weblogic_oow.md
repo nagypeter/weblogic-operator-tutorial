@@ -87,7 +87,7 @@ Please note the two backends and the namespace, serviceName, servicePort definit
 
 You may now reach your consolein the following URL
 
-`https://EXTERNAL-IP/console<PLEASE REPLACE THIS PART WITH YOUR USER ID>`
+`http://EXTERNAL-IP/console<PLEASE REPLACE THIS PART WITH YOUR USER ID>`
 
 Where the EXTERNAL-IP represents IP assigned to Traefik service. Please execute the following command to get the public IP address:
 ```
