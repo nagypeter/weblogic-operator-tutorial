@@ -42,11 +42,11 @@ Note the values:
 Execute the following `helm install`:
 ```
 helm install kubernetes/charts/weblogic-operator \
-  --name sample-weblogic-operator \
+  --name sample-weblogic-operator-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
   --namespace sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
   --set image=oracle/weblogic-kubernetes-operator:2.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
-  --set "domainNamespaces={sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>}"
+  --set "domainNamespaces={}"
 ```
 The result has to be similar:
 ```
