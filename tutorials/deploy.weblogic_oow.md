@@ -22,6 +22,25 @@ kubectl label secret sample-domain1-weblogic-credentials \
   weblogic.domainName=sample-domain1
 ```
 
+#### Update WebLogic Operator configuration ####
+
+Once you have your domain namespace (WebLogic domain not yet deployed) you have to update operator's configuration about the location where the domain will be deployed.
+
+Make sure before execute domain `helm` install you are in the WebLogic Operator's local Git repository folder.
+```
+cd /u01/content/weblogic-kubernetes-operator/
+```
+To update operator execute the following `helm upgrade` command:
+```
+helm upgrade \
+  --reuse-values \
+  --set "domainNamespaces={sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>}" \
+  --wait \
+  sample-weblogic-operator-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
+  kubernetes/charts/weblogic-operator
+```
+
+
 #### Deploy WebLogic domain on Kubernetes ####
 
 To deploy WebLogic domain you need to create a domain resource definition which contains the necessary parameters for the operator to start the WebLogic domain properly.
