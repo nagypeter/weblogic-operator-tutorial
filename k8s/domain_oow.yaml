@@ -94,8 +94,8 @@ spec:
       channels:
        # Update this to set the NodePort to use for the Admin Server's default channel (where the
        # admin console will be available):
-       - channelName: default
-         nodePort: 30701
+       #- channelName: default
+       #  nodePort: 30701
        # Uncomment to export the T3Channel as a service
        #- channelName: T3Channel
 #    serverPod:
