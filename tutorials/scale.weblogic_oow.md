@@ -1,4 +1,4 @@
-# Oracle Open World 2019 - HOL 5312#
+# Oracle Open World 2019 - HOL 5312 #
 
 ### Scaling WebLogic cluster  ###
 
