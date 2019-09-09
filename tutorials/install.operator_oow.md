@@ -102,7 +102,7 @@ weblogic-operator-f669874df-sl9cn  1/1    Running  0         14s
 
 Check the operator pod:
 ```
-$ kubectl get po -n sample-weblogic-operator-ns
+$ kubectl get po -n sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>
 NAME                                READY     STATUS    RESTARTS   AGE
 weblogic-operator-f669874df-sl9cn   1/1       Running   0          1m
 ```
