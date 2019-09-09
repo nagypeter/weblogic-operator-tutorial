@@ -106,11 +106,6 @@ $ kubectl get po -n sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH Y
 NAME                                READY     STATUS    RESTARTS   AGE
 weblogic-operator-f669874df-sl9cn   1/1       Running   0          1m
 ```
-Check the operator helm chart:
-```
-$ helm list sample-weblogic-operator
-NAME                    	REVISION	UPDATED                 	STATUS  	CHART              	NAMESPACE                  
-sample-weblogic-operator	1       	Mon Feb  4 19:10:56 2019	DEPLOYED	weblogic-operator-2	sample-weblogic-operator-ns
-```
+
 
 The WebLogic Operator has been installed. You can continue with next tutorial module - [Deploy WebLogic Domain](deploy.weblogic_oow.md).
