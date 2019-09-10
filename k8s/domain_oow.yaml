@@ -90,14 +90,6 @@ spec:
     # "RUNNING" means the listed server will be started up to "RUNNING" mode
     # "ADMIN" means the listed server will be start up to "ADMIN" mode
     serverStartState: "RUNNING"
-    adminService:
-      channels:
-       # Update this to set the NodePort to use for the Admin Server's default channel (where the
-       # admin console will be available):
-       #- channelName: default
-       #  nodePort: 30701
-       # Uncomment to export the T3Channel as a service
-       #- channelName: T3Channel
 #    serverPod:
 #      nodeSelector:
 #        wlservers2: true
