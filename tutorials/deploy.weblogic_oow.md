@@ -107,6 +107,9 @@ Please note the two backends and the namespace, serviceName, servicePort definit
 We need to define entry in /etc/hosts file with proper virtual host name. To do so first you need collect IP assigned to Traefik service (Ingress type of LB) . Please execute the following command to get the public IP address:
 ```
 $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+```
+The result should display the IP of the Public Load Balancer
+```
 129.213.172.95
 ```
 
@@ -114,7 +117,6 @@ Please edit /etc/hosts
 ```
 $ vi /etc/hosts
 ```
-
 and add the following line
 ```
 129.213.172.95  cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow
