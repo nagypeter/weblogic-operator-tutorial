@@ -50,7 +50,7 @@ We provided for you domain.yaml file that contains yaml representation of the cu
 curl -LSs https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/master/k8s/domain_oow.yaml >/u01/domain.yaml
 ```
 Please open it with your favorite editor and replace the fragment of "PLEASE REPLACE THIS PART WITH YOUR USER ID" with your USER ID. The easiest way of editing is through following command:
-```bash
+```
 gedit /u01/domain.yaml &
 ```
 
