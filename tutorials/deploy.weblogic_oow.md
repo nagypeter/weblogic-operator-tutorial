@@ -118,7 +118,7 @@ The result should display the IP of the Public Load Balancer
 
 Please edit /etc/hosts
 ```
-$ vi /etc/hosts
+$ sudo vi /etc/hosts
 ```
 and add the following line
 ```
