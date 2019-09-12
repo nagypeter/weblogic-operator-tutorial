@@ -10,7 +10,7 @@ Every participant will create own kubernetes namespace and will install operator
 
 Kubernetes distinguishes between the concept of a user account and a service account for a number of reasons. The main reason is that user accounts are for humans while service accounts are for processes, which run in pods. WebLogic Operator also requires service accounts.  If service account not specified, it defaults to default (for example, the namespace's default service account). If you want to use a different service account, then you must create the operator's namespace and the service account before installing the operator Helm chart.
 
-Thus create operator's namespace in advance (don't forget to replace proper USER ID with the ID given you by Instructor:
+Thus create operator's namespace in advance (don't forget to replace proper USER ID with the ID given you by Instructor):
 
     kubectl create namespace sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>
 
@@ -22,24 +22,17 @@ Make sure before execute operator `helm` install you are in the WebLogic Operato
 
     cd /u01/content/weblogic-kubernetes-operator/
 
-Use the `helm install` command to install the operator Helm chart. As part of this, you must specify a "release" name for their operator.
+Use the `helm install` command to install the operator Helm chart. As part of this, you must specify a "release" name for their operator. In this HOL you will share Kubernetes cluster with other participants. This is why your Operator release name must be unique and we add there your USER ID. The configuration for the Helm chart was downloaded from github repository when we cloned in advance the repository with WebLogic Operator.
 
-You can override default configuration values in the operator Helm chart by doing one of the following:
+Note the syntax of the helm install command requires the following parameters:
 
-- Creating a [custom YAML](https://github.com/oracle/weblogic-kubernetes-operator/blob/2.0/kubernetes/charts/weblogic-operator/values.yaml) file containing the values to be overridden, and specifying the `--value` option on the Helm command line.
-- Overriding individual values directly on the Helm command line, using the `--set` option.
-
-Using the last option simply define overriding values using the `--set` option.
-
-Note the values:
-
-- **name**: name of the resource
-- **namespace**: where the operator deployed
+- **name**: name of the release - in our case unique name of the operator that you try to deploy to kubernetes cluster
+- **namespace**: namespace in the kubernetes cluster where the operator will be deployed to (the one that you just created)
 - **image**: the prebuilt WebLogic Operator 2.0 image. Available on public Docker hub.
-- **serviceAccount**: service account required to run operator
-- **domainNamespaces**: namespaces where WebLogic domains will be deployed in order to control. We will create that namespace later during HOL
+- **serviceAccount**: service account required to run operator (the one that you just created)
+- **domainNamespaces**: namespaces that operator will monitor for Custom Resource object. Operator will create all pods with WebLogic domains inside these namespaces. We will create that namespace later during HOL
 
-Execute the following `helm install`:
+So at the begining you need to execute the following `helm install`:
 ```
 helm install kubernetes/charts/weblogic-operator \
   --name sample-weblogic-operator-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
@@ -100,7 +93,7 @@ NAME                               READY  STATUS   RESTARTS  AGE
 weblogic-operator-f669874df-sl9cn  1/1    Running  0         14s
 ```
 
-Check the operator pod:
+To verify that the operator is ready to control the lifecycle of WebLogic domains please verify the status of the operator pod:
 ```
 $ kubectl get po -n sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>
 NAME                                READY     STATUS    RESTARTS   AGE
