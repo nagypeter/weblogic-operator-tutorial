@@ -39,16 +39,6 @@ Soon the managed server 3 will appear and will be ready within a few minutes. Yo
 
 ![alt text](images/scaling/check.on.console.png)
 
-Note! You can edit directly the existing (running) domain resource file by using the `kubectl edit` command. In this case your `domain.yaml` available on your desktop will not reflect the changes of the running domain's resource.
-```
-kubectl edit domain DOMAIN_UID -n DOMAIN_NAMESPACE
-```
-In case if you use default settings the syntax is:
-```
-kubectl edit domain sample-domain1 -n sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>
-```
-It will use `vi` like editor.
-
 ---
 Note! Do not use the console to scale the cluster. The operator controls this operation. Use the operator's options to scale your cluster deployed on Kubernetes.
 
