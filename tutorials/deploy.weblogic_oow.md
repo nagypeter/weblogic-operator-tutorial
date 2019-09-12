@@ -4,17 +4,17 @@
 
 #### Preparing the Kubernetes cluster to run WebLogic domains ####
 
-Create the domain namespace (again don't forget to replace proper text with USER ID given by instructor):
+Every WebLogic Domain controlled by operator needs to be created in own separate kubernetes namespace. You have to create this  namespace now (again don't forget to replace proper text with USER ID given by instructor).:
 ```
 kubectl create namespace sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID>
 ```
-Create a Kubernetes secret containing the Administration Server boot credentials. We do it to override credentials that are stored in the image. You may replace in the sample below password "welcome1" with any other but when you in the future try to login to console please don't forget which password you have used:
+WebLogic Operator integrates kubernetes secrets with WLS image and overrides default admin username/password (that are stored in the image) with the secret values stored inside kubernetes. So you need to create a Kubernetes secret containing the Administration Server boot credentials. You may replace in the sample below password "welcome1" with any other but when you in the future try to login to console please don't forget which password you have used:
 ```
 kubectl -n sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> create secret generic sample-domain1-weblogic-credentials \
   --from-literal=username=weblogic \
   --from-literal=password=welcome1
 ```
-Label the secret with domainUID:
+Operator requires that all resources used by the WebLogic domain were properly labeled with domainUID. So you need to label the secret with domainUID:
 ```
 kubectl label secret sample-domain1-weblogic-credentials \
   -n sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
@@ -24,7 +24,7 @@ kubectl label secret sample-domain1-weblogic-credentials \
 
 #### Update WebLogic Operator configuration ####
 
-Once you have your domain namespace (WebLogic domain not yet deployed) you have to update operator's configuration about the location where the domain will be deployed.
+Once you have your domain namespace (WebLogic domain not yet deployed) you have to update operator's configuration about the location where the domain will be deployed. The operator must know what namespaces to monitor to look for Customer Resource Object. So You need to update the deployed operator by proper helm command.
 
 Make sure before execute domain `helm` install you are in the WebLogic Operator's local Git repository folder.
 ```
@@ -43,7 +43,7 @@ helm upgrade \
 
 #### Deploy WebLogic domain on Kubernetes ####
 
-To deploy WebLogic domain you need to create a domain resource definition which contains the necessary parameters for the operator to start the WebLogic domain properly.
+To deploy WebLogic domain you need to create a domain custome resource definition which contains the necessary parameters for the operator to start the WebLogic domain properly.
 
 We provided for you domain.yaml file that contains yaml representation of the custom resoirce object. Please copy it locally
 ```
@@ -107,15 +107,14 @@ EOF
 
 Please note the two backends and the namespace, serviceName, servicePort definitions. The first backend is the domain cluster service to reach the application at the root context path. The second is for the admin console which is a different service.
 
-We need to define entry in /etc/hosts file with proper virtual host name. To do so first you need collect IP assigned to Traefik service (Ingress type of LB) . Please execute the following command to get the public IP address:
+As all participants of that HOL are using the same Load Balancer with the same IP we decided that the routing to the proper namespace (WLS Domain) will happen based on the hostname string in the URL. This is why the rule for routing above contains the parameter "host". Every participant will use own hostname. You need to define entry in /etc/hosts file with proper virtual hostname. To do so first you need collect IP assigned to Traefik service (Ingress type of LB) . Please execute the following command to get the public IP address:
 ```
 $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
 ```
-The result should display the IP of the Public Load Balancer
+The result should display the IP of the Public Load Balancer (IP below is just an example)
 ```
 129.213.172.95
 ```
-
 Please edit /etc/hosts
 ```
 $ sudo vi /etc/hosts
@@ -134,7 +133,7 @@ Enter admin user credentials (weblogic/welcome1) and click **Login**
 
 ![](images/deploy.domain/weblogic.console.login.png)
 
-!Please note in this use case the use of Administration Console is just for demo/test purposes because domain configuration persisted in pod which means after the restart the original values (baked into the image) will be used again. To override certain configuration parameters - to ensure image portability - follow the override part of this tutorial.
+!Please note in this use case the use of Administration Console is just for demo/test purposes because domain configuration persisted in pod which means after the restart the original values (baked into the image) will be used again. 
 
 #### Test the demo Web Application ####
 
