@@ -16,7 +16,9 @@ Thus create operator's namespace in advance (don't forget to replace proper USER
 
 Create the service account:
 
-    kubectl create serviceaccount -n sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> sample-weblogic-operator-sa
+    kubectl create serviceaccount \
+     -n sample-weblogic-operator-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
+     sample-weblogic-operator-sa
 
 Make sure before execute operator `helm` install you are in the WebLogic Operator's local Git repository folder (inside VM).
 
