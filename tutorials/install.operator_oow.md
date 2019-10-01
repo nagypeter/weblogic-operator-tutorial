@@ -24,6 +24,10 @@ Make sure before execute operator `helm` install you are in the WebLogic Operato
 
     cd /u01/content/weblogic-kubernetes-operator/
 
+It is good practice to upgrade tiller service on server side before you start using helm. So please execute the following command
+
+    helm init --upgrade
+
 Use the `helm install` command to install the operator Helm chart. As part of this, you must specify a "release" name for their operator. In this HOL you will share Kubernetes cluster with other participants. This is why your Operator release name must be unique and we add there your USER ID. The configuration for the Helm chart was downloaded from github repository when we cloned in advance the repository with WebLogic Operator.
 
 Note the syntax of the helm install command requires the following parameters:
