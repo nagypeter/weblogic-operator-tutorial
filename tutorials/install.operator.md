@@ -51,6 +51,10 @@ Make sure before execute operator `helm` install you are in the WebLogic Operato
 
     cd /u01/content/weblogic-kubernetes-operator/
 
+It is good practice to upgrade tiller service on server side before you start using helm. So please execute the following command
+
+    helm init --upgrade
+
 Use the `helm install` command to install the operator Helm chart. As part of this, you must specify a "release" name for their operator.
 
 You can override default configuration values in the operator Helm chart by doing one of the following:
