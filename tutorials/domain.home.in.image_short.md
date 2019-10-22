@@ -23,7 +23,7 @@ This tutorial has been tested on Oracle Cloud Infrastructure Container Engine fo
 ### Prerequisites ###
 
 - [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account. The tutorial has been tested using [Trial account](https://myservices.us.oraclecloud.com/mycloud/signup) (as of January, 2019).
-- Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/file/d/1B8HXGioWL6IpyufS_TYBKKu7oAbqWkAG), import VirtualBox image (total required space: OVA + imported image > 7 GB) and run configuration script to get tested environment for this workshop.
+- Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/file/d/1B8HXGioWL6IpyufS_TYBKKu7oAbqWkAG), import VirtualBox image (total required space: OVA + imported image < 7 GB) and run configuration script to get tested environment for this workshop.
   - If necessary first [download VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop software.
 
 #### Before you start prepare VirtualBox image for workshop ####
