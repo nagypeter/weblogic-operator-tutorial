@@ -23,16 +23,16 @@ This tutorial has been tested on Oracle Cloud Infrastructure Container Engine fo
 ### Prerequisites ###
 
 - [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account. The tutorial has been tested using [Trial account](https://myservices.us.oraclecloud.com/mycloud/signup) (as of January, 2019).
-- Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/open?id=11CvOZ-j50-2q9-rrQmxpEwmQZbPMkw2a) and import the preconfigured VirtualBox image (total required space > 12 GB)
-  - [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads) if necessary.
+- Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/file/d/1B8HXGioWL6IpyufS_TYBKKu7oAbqWkAG), import VirtualBox image (total required space: OVA + imported image > 7 GB) and run configuration script to get tested environment for this workshop.
+  - If necessary first [download VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop software.
 
-#### Before you start update HOL desktop environment (VirtualBox image) ####
+#### Before you start prepare VirtualBox image for workshop ####
 
-Depending on your network connection make sure you switched ON or OFF the proxy configuration by clicking the corresponding shortcut on the desktop.
-
-After the proxy configuration double click the **Update** icon and wait until the update process complete. Hit enter when you see the *Press [Enter] to close the window* message to close the update terminal.
-
-![](images/update.HOL.png)
+Open a terminal window and execute the following configuration script to prepare your desktop environment (VirtualBox image).
+```bash
+curl -LSs https://raw.githubusercontent.com/nagypeter/vmcontrol/master/setup-operator-workshop.sh | bash
+```
+Close the terminal when the script has finished.
 
 ### The topics to be covered in this hands-on session are: ###
 
