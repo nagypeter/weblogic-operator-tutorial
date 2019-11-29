@@ -22,19 +22,24 @@ This tutorial has been tested on Oracle Cloud Infrastructure Container Engine fo
 
 ### Prerequisites ###
 
+We recommend to run the client software (kubectl, git, helm) in of two environments: either inside Virtual Box on local machine or in the OCI Compute VM in the Oracle Cloud. 
+
+#### Option 1: Running client in Virtual Box ####
+
 - [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account. The tutorial has been tested using [Trial account](https://myservices.us.oraclecloud.com/mycloud/signup) (as of January, 2019).
 - Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/file/d/140JW-H5zzh0P709W-hdUPcbw_HZy2XcX), import VirtualBox image (total required space: OVA + imported image < 7 GB) and run configuration script to get tested environment for this workshop.
   - If necessary first [download VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop software.
-
-!If your desktop can't run Virtualbox software or the image then follow this [tutorial](setup.dev.compute.instance.md) and setup Compute VM on Oracle Cloud Infrastructure what you can use as a remote development environment through `ssh`.
-
-#### Before you start prepare VirtualBox image for workshop ####
-
-Open a terminal window and execute the following configuration script to prepare your desktop environment (VirtualBox image).
+- Inside Virtual Box open a terminal window and execute the following configuration script to prepare your desktop environment (VirtualBox image).
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/nagypeter/vmcontrol/master/setup-operator-workshop.sh)
 ```
-Close the terminal when the script has finished.
+- Close the terminal when the script has finished.
+
+#### Option 2: Running client in OCI Compute VM ####
+
+To setup the client VM in Oracle Cloud please  then follow this [tutorial](setup.dev.compute.instance.md). You later connect to that VM   through `ssh`.
+
+
 
 ### The topics to be covered in this hands-on session are: ###
 
