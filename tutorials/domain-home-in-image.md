@@ -26,6 +26,8 @@ This tutorial has been tested on Oracle Cloud Infrastructure Container Engine fo
 - Desktop with Oracle Cloud Infrastructure CLI, `kubectl`, `helm`. [Download](https://drive.google.com/file/d/140JW-H5zzh0P709W-hdUPcbw_HZy2XcX), import VirtualBox image (total required space: OVA + imported image < 7 GB) and run configuration script to get tested environment for this workshop.
   - If necessary first [download VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop software.
 
+!If your desktop can't run Virtualbox software or the image then follow this [tutorial](setup.dev.compute.instance.md) and setup Compute VM on Oracle Cloud Infrastructure what you can use as a remote development environment through `ssh`.
+
 #### Before you start prepare VirtualBox image for workshop ####
 
 Open a terminal window and execute the following configuration script to prepare your desktop environment (VirtualBox image).
