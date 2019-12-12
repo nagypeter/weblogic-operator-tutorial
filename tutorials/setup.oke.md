@@ -83,7 +83,7 @@ The Create Virtual Cloud Network panel shows the network resources that will be 
 
 	- the name of the node pool (always pool1)
 	- the compartment in which the node pool will be created (always the same as the one in which the new network resources will reside)
-	- the version of Kubernetes that will run on each worker node in the node pool (always the same as the version specified for the master nodes) 
+	- the version of Kubernetes that will run on each worker node in the node pool (always the same as the version specified for the master nodes)
         - the image to use on each node in the node pool
 
 The Create Node Pool panel also contains some node pool properties that you can change.

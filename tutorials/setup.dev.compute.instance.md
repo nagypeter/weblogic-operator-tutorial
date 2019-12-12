@@ -39,30 +39,37 @@ Click the hamburger menu icon at the top left corner and select **Networking** o
 
 ![alt text](images/compute.instance/005.networking.png)
 
-On the Virtual Cloud Networks page click **Create Virtual Cloud Network**.
+On the Virtual Cloud Networks page click **Networking Quickstart**.
 
 ![alt text](images/compute.instance/006.create.vcn.png)
 
-Specify the following configuration details:
+In the Networking Quickstart dialog, select *VCN with Internet Connectivity*. Then click **Start Workflow**.
 
-- **Name**: Enter a name for your cloud network, what helps you later to identify this resource. In this example: *vcn-20191129-dev-pnagy*
-- **Create In Compartment**: By default, this field displays your current compartment.
-- Select **CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES**: By selecting this option, you will be creating a VCN with only public subnets.
-- Accept the defaults for other fields.
+![alt text](images/compute.instance/006.1.networking.quickstart.png)
 
-Scroll to the bottom of the dialog and click **Create Virtual Cloud Network**.
-![alt text](images/compute.instance/007.1.vcn.details.png)
-![alt text](images/compute.instance/007.2.vcn.details.png)
-![alt text](images/compute.instance/007.3.vcn.details.png)
+In the create page specify the following configuration details:
+- **VCN NAME**: Enter a name for your cloud network, what helps you later to identify this resource. In this example: *vcn-20191129-dev-pnagy*
+- **COMPARTMENT**: By default, this field displays your current compartment.
+- **VCN CIDR BLOCK**: 10.0.0.0/16
+- **PUBLIC SUBNET CIDR BLOCK**: 10.0.0.0/24
+- **PRIVATE SUBNET CIDR BLOCK**: 10.0.1.0/24
+- **USE DNS HOSTNAMES IN THIS VCN**: Leave the selected -default- *USE DNS HOSTNAMES IN THIS VCN* .
 
-A confirmation page with the details of the cloud network is diplayed. The cloud network has the following resources and characteristics:
+Click **Next**.
 
-- CIDR block range of 10.0.0.0/16.
-- An Internet Gateway.
-- A route table with a default route rule to enable traffic to and from the Internet Gateway.
-- A default security list.
-- A public subnet in each Availability Domain.
-- The VCN will automatically use the Internet and VCN Resolver for DNS.
+![alt text](images/compute.instance/006.2.networking.details.png)
+![alt text](images/compute.instance/006.3.networking.details.png)
+
+You can review the configuration of the VCN, subnets, security lists and route rules in the Review page. Click **Create** to start creating the VCN with resources.
+
+![alt text](images/compute.instance/006.4.networking.review.png)
+![alt text](images/compute.instance/006.5.networking.review.png)
+![alt text](images/compute.instance/006.6.networking.review.png)
+
+The VCN is created with all the components. Click on **View Virtual Cloud Network** to enter the VCN.
+
+![alt text](images/compute.instance/007.vcn.ready.png)
+
 
 #### Create Compute VM ####
 
@@ -94,7 +101,7 @@ Specify the remaining configuration details:
 - **Virtual cloud network compartment**: Leave your default.
 - **Virtual cloud network**: Most likely the default is the VCN what you created in the previous step. If not then select what you just created above.
 - **Subnet compartment**: Leave your default.
-- **Subnet**: By default it should be the subnet belongs to the selected availability domain (*AD 1*) above.
+- **Subnet**: Make sure the public(!) subnet e.g.:*Public Subnet-xxx (Regional)* is selected.
 - **Assign a public IP address**: select this option to allow external access (`ssh`) to your compute VM.
 - **Add SSH key**: select the previously created `~/.ssh/myDeveloperComputeKey.pub` or copy and paste its content to the *SSH key* field.
 
