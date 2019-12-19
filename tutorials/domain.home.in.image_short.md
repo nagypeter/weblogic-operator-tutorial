@@ -38,6 +38,7 @@ bash <(curl -s https://raw.githubusercontent.com/nagypeter/vmcontrol/master/setu
 #### Option 2: Running client in OCI Compute VM ####
 
 To setup the client VM in Oracle Cloud please  then follow this [tutorial](setup.dev.compute.instance.md). You later connect to that VM   through `ssh`.
+However in that case have in mind that the operator sources were cloned to the `/home/opc/` folder and the folder `/u01/content` doesn't exist in the VM. So whenever the tutorial asks you to change the current folder to `/u01/content/...` you should really move to `/home/opc/...`
 
 
 
