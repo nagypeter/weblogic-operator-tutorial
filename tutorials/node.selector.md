@@ -4,11 +4,11 @@
 
 When you create a Managed server (Pod), the Kubernetes scheduler selects a node for the Pod to run on. The scheduler ensures that, for each resource type, the sum of the resource requests of the scheduled Containers is less than the capacity of the node. Note that although actual memory or CPU resource usage on nodes is very low, the scheduler still refuses to place a Pod on a node if the capacity check fails.
 
-However you can create affinity with a `nodeSelector` to constrain a pod to only be able to run on particular nodes. Generally such constraints are unnecessary, as the scheduler will automatically do a reasonable placement but there are some circumstances where you may want more control on a node where a pod lands, e.g.:
+However you can create affinity with a `nodeSelector` to constrain a pod to only be able to run on particular nodes. Generally such constraints are unnecessary, as the scheduler will automatically do a reasonable placement but there are some circumstances where you may want more control on a node where a pod is scheduled, e.g.:
 
-- to ensure that a pod ends up on a machine with an SSD attached to it
+- to ensure that a pod is scheduled on a machine with an SSD attached to it
 - to co-locate pods from two different services that communicate a lot into the same availability zone
-- to ensure pods end up in different availability zone for better high availability
+- to ensure pods are scheduled in different availability zones for better high availability
 - to move away (*draining*) all pods from given node because of maintenance reason
 - to ensure that pod's runs certain software ends up on licensed environment.
 
@@ -18,8 +18,33 @@ In this lab you will learn how to assign pods individual Managed Server and or t
 
 ##### Assign particular servers to specific nodes #####
 
-To assign pod(s) to node(s) you need to label the desired node with custom tag. Then define the `nodeSelector` property in the domain resource definition and set the value of the label you applied on the node. Finally apply the domain configuration changes.
+To assign pod(s) to node(s) you need to label the desired node with custom tag. Then define the `nodeSelector` property in the domain resource definition to the value of the label you applied on the node. When the pods are restarted the Kubernetes schedules the pods in the labeld nodes.  
 
+To stop all running WebLogic Server pods in your domain, apply a changed resource, and then start the domain:
+
+1. Open the *domain.yaml* again and set your domain resource `serverStartPolicy` to `NEVER`.
+
+2. Apply changes:
+```
+kubectl apply -f /u01/domain.yaml
+```
+Check the pod's status:
+```
+$ kubectl get po -n sample-domain1-ns
+NAME                             READY     STATUS        RESTARTS   AGE
+sample-domain1-admin-server      1/1       Terminating   0          1h
+sample-domain1-managed-server1   1/1       Terminating   0          1h
+$ kubectl get po -n sample-domain1-ns
+No resources found.
+```
+Wait till all pods are terminated and no resources found.
+
+3. Open the *domain.yaml* again and set your domain resource definition the `nodeSelector` value to the label you applied on the node and the `serverStartPolicy` back to `IF_NEEDED`.
+
+4. Apply changes:
+```
+kubectl apply -f /u01/domain.yaml
+```
 First get the node names using `kubectl get node`:
 ```
 $ kubectl get node
