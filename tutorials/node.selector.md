@@ -18,7 +18,7 @@ In this lab you will learn how to assign pods individual Managed Server and or t
 
 ##### Assign particular servers to specific nodes #####
 
-To assign pod(s) to node(s) you need to label the desired node with custom tag. Then define the `nodeSelector` property in the domain resource definition to the value of the label you applied on the node. When the pods are restarted the Kubernetes schedules the pods in the labeld nodes.  
+To assign pod(s) to node(s) you need to label the desired node with custom tag. Then define the `nodeSelector` property in the domain resource definition to the value of the label you applied on the node. When the pods are restarted the Kubernetes schedules the pods in the labeled nodes.  
 
 To stop all running WebLogic Server pods in your domain, apply a changed resource, and then start the domain:
 
