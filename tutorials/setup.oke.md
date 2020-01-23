@@ -72,6 +72,10 @@ On the Cluster List page, click **Create Cluster**.
 
 ![alt text](images/oke/008.create.cluster.png)
 
+In the Create Cluster Solution dialog, select *Quick Create* and click **Launch Workflow**.
+
+![alt text](images/oke/009.quick.1.png)
+
 Select **Quick Create** to create a new cluster with default settings, along with new network resources for the new cluster.
 The Create Virtual Cloud Network panel shows the network resources that will be created for you by default, namely a VCN, two load balancer subnets, and three worker node subnets.
 
@@ -85,13 +89,22 @@ Specify the following configuration details on Cluster Creation page:
 - **Kubernetes Dashboard Enabled**: Leave the default true (DISABLED).
 - **Tiller (Helm) Enabled**: Change the default true and make it ENABLED.
 
-Click **Create** to create the new network resources and the new cluster.
+Click **Next** to review the details you entered for the new cluster.
 
-![alt text](images/oke/009.quick.part.1.png)
-![alt text](images/oke/009.quick.part.2.png)
-![alt text](images/oke/009.quick.part.3.png)
+![alt text](images/oke/009.quick.details.1.png)
+![alt text](images/oke/009.quick.details.2.png)
 
-Click **Next** and then **Create Cluster** on the next page.
+On the *Review* page, click **Submit** to create the new network resources and the new cluster.
+
+![alt text](images/oke/009.quick.review.1.png)
+![alt text](images/oke/009.quick.review.2.png)
+![alt text](images/oke/009.quick.review.3.png)
+
+You see the different network resources being created for you.
+
+![alt text](images/oke/009.quick.submitted.png)
+
+Click **Close** and the new cluster is shown on the *Cluster Details* page. When it has been created, the new cluster has a status of *Active*.
 
 #### Prepare OCI CLI to download Kubernetes configuration file ####
 
