@@ -14,13 +14,7 @@ kubectl -n sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> create
   --from-literal=username=weblogic \
   --from-literal=password=welcome1
 ```
-Operator requires that all resources used by the WebLogic domain were properly labeled with domainUID. So you need to label the secret with domainUID:
-```
-kubectl label secret sample-domain1-weblogic-credentials \
-  -n sample-domain1-ns-<PLEASE REPLACE THIS PART WITH YOUR USER ID> \
-  weblogic.domainUID=sample-domain1 \
-  weblogic.domainName=sample-domain1
-```
+
 
 #### Update WebLogic Operator configuration ####
 
