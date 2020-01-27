@@ -14,13 +14,6 @@ kubectl -n sample-domain1-ns create secret generic sample-domain1-weblogic-crede
   --from-literal=username=weblogic \
   --from-literal=password=welcome1
 ```
-Label the secret with domainUID:
-```
-kubectl label secret sample-domain1-weblogic-credentials \
-  -n sample-domain1-ns \
-  weblogic.domainUID=sample-domain1 \
-  weblogic.domainName=sample-domain1
-```
 
 #### Update Traefik loadbalancer and WebLogic Operator configuration ####
 
