@@ -107,7 +107,7 @@ $ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk
 ```
 The result should display the IP of the Public Load Balancer (IP below is just an example)
 ```
-129.213.172.95
+150.136.186.100
 ```
 Please edit /etc/hosts
 ```
@@ -115,7 +115,7 @@ $ sudo vi /etc/hosts
 ```
 and add the following line
 ```
-129.213.172.95  cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow
+150.136.186.100  cluster<PLEASE REPLACE THIS PART WITH YOUR USER ID>.oow
 ```
 where the first argument is the IP of Traefik service.
 
