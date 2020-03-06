@@ -20,15 +20,14 @@ Helm is a framework that helps you manage Kubernetes applications, and helm char
 
 This tutorial has been tested on Oracle Cloud Infrastructure Container Engine for Kubernetes (OKE).
 
-
 ### The topics to be covered in this hands-on session are: ###
 
-1. [Setup Oracle Kubernetes Engine instance on Oracle Cloud Infrastructure.](setup.oke.updated.md)
-2. [Install WebLogic Operator](install.operator.updated.md)
-3. [Install Traefik Software Loadbalancer](install.traefik.updated.md)
-4. [Deploy WebLogic Domain](deploy.weblogic_short.updated.md)
-5. [Scaling WebLogic Cluster](scale.weblogic.md)
-6. [Override JDBC Datasource parameters](override.jdbc.md)
-7. [Updating deployed application by rolling restart to the new image](update.application_short.md)
-7. [Assigning WebLogic Pods to Nodes (scenario simulating cluster spanning 2 data center)](node.selector.md)
-8. [Assigning WebLogic Pods to Nodes (scenario simulating licensing only the subset of the cluster)](node.selector.license.md)
+1. [Setup Oracle Kubernetes Engine instance on Oracle Cloud Infrastructure.](setup.oke.ocishell.md)
+2. [Install WebLogic Operator](install.operator.ocishell.md)
+3. [Install Traefik Software Loadbalancer](install.traefik.ocishell.md)
+4. [Deploy WebLogic Domain](deploy.weblogic_short.ocishell.md)
+5. [Scaling WebLogic Cluster](scale.weblogic.ocishell.md)
+6. [Override JDBC Datasource parameters](override.jdbc.ocishell.md)
+7. [Updating deployed application by rolling restart to the new image](update.application_short.ocishell.md)
+7. [Assigning WebLogic Pods to Nodes (scenario simulating cluster spanning 2 data center)](node.selector.ocishell.md)
+8. [Assigning WebLogic Pods to Nodes (scenario simulating licensing only the subset of the cluster)](node.selector.license.ocishell.md)
