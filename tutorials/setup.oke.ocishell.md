@@ -158,11 +158,11 @@ In the Console click on your OCI user name and select User Settings. On the user
 
 Then execute the role binding command using your(!) user OCID:
 ```bash
-	kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=<YOUR_USER_OCID>
+kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=<YOUR_USER_OCID>
 ```
 For example:
 ```bash
-	$ kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=ocid1.user.oc1..AGAIN_THIS_IS_EXAMPLE
-	clusterrolebinding.rbac.authorization.k8s.io/my-cluster-admin-binding created
+$ kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=ocid1.user.oc1..AGAIN_THIS_IS_EXAMPLE
+clusterrolebinding.rbac.authorization.k8s.io/my-cluster-admin-binding created
 ```
 Congratulation, now your OCI OKE environment is ready to deploy your WebLogic domain.

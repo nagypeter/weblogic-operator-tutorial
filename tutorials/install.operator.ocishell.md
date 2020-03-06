@@ -5,7 +5,7 @@
 An operator is an application-specific controller that extends Kubernetes to create, configure, and manage instances of complex applications. The Oracle WebLogic Server Kubernetes Operator (the "operator") simplifies the management and operation of WebLogic domains and deployments.
 
 #### Clone WebLogic Operator repository to Cloud Shell instance ####
-First clone the WebLogic Operator git repository to your desktop.
+First clone the WebLogic Operator git repository to OCI Cloud Shell.
 ```bash
 $ git clone https://github.com/oracle/weblogic-kubernetes-operator.git  -b v2.5.0
 ```
