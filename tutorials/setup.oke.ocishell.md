@@ -132,8 +132,9 @@ A dialog pops up which contains the customized OCI command that you need to exec
 Click the **Copy** link to copy the `oci ce...` command to Cloud Shell. Close the configuration dialog before you try to paste the command into terminal.
 
 ![alt text](images/oke/023.ocishell.config.dialog.png)
+So for example that command looks like:
 ```bash
-$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.phx.aaaaaaaaafrtazrwgrdcnden3dgfsw --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
+$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.THIS_IS_EXAMPLE_DONT_COPY_PASTE_FROM_HERE --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
 New config written to the Kubeconfig file /home/peter_nagy/.kube/config
 ```
 Now check that `kubectl` is working, for example using the `get node` command:
