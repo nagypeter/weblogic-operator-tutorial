@@ -82,7 +82,7 @@ The Create Virtual Cloud Network panel shows the network resources that will be 
 Specify the following configuration details on Cluster Creation page:
 - **Name**: The name of the cluster. Leave the default value.
 - **Compartment**: The name of the compartment. Leave the default value.
-- **Kubernetes version**: The version of the Kubernetes. Leave the default value.
+- **Kubernetes version**: The version of the Kubernetes. Leave the default value. (Don't select version 16 even if it is default version - please select version 15 in such case)
 - **Choose Visibility Type**: Is the cluster going to be routable or not. Leave the default value.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by Container Engine for Kubernetes. Select the available *VM.Standard2.1*
 - **Number of nodes**: The number of worker nodes to create. Leave the default value *3*
