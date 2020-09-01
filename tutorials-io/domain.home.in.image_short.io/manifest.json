@@ -3,7 +3,7 @@
     "tutorials": [
         {
             "title": "Introduction",
-            "filename": "../../domain.home.in.image_short_updated.md"
+            "filename": "domain.home.in.image_short_updated.io.md"
         },
         {
             "title": "Prerequisites",
@@ -12,7 +12,7 @@
         },
         {
             "title": "Lab 1: Set up an Oracle Kubernetes Engine instance on the Oracle Cloud Infrastructure",
-            "filename": "../../1-setup-oke/setup.oke.ocishell.md"
+            "filename": "../../tutorials/setup.oke.ocishell.md"
         },
         {
             "title": "Lab 2: Install the WebLogic Server Kubernetes Operator",

@@ -1,4 +1,4 @@
-# Introduction
+  # Introduction
 
 ## About this Workshop
 
@@ -13,7 +13,7 @@ A WebLogic domain can be located either in a persistent volume (PV) or in a Dock
 
 This tutorial uses the Docker image with the WebLogic domain inside the image deployment. This means that all the artifacts and domain-related files are stored within the image. There is no central, shared domain folder from the pods. This is similar to the standard installation topology where you distribute your domain to different hosts to scale out Managed Servers. The main difference is that by using a container-packaged WebLogic domain, you don't need to use the pack/unpack mechanism to distribute domain binaries and configuration files between multiple hosts.
 
-![](../tutorials/images/wlsonk8s.domain-home-in-image.png)
+![](../../tutorials/images/wlsonk8s.domain-home-in-image.png)
 
 In a Kubernetes environment, the operator ensures that only one Administration Server and multiple Managed Servers will run in the domain. An operator is an application-specific controller that extends Kubernetes to create, configure, and manage instances of complex applications. The Oracle WebLogic Server Kubernetes Operator simplifies the management and operation of WebLogic domains and deployments.
 
