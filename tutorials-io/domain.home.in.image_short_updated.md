@@ -35,8 +35,6 @@ This tutorial has been tested on the Oracle Cloud Infrastructure Container Engin
 
 ## Learn More
 
-*(optional - include links to docs, white papers, blogs, etc)*
-
 * [WebLogic Kubernetes Operator Documentation](https://oracle.github.io/weblogic-kubernetes-operator)
 
 ## See an issue?
