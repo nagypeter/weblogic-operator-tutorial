@@ -1,12 +1,12 @@
-# Oracle WebLogic Server Kubernetes Operator Tutorial #
+# Application lifecycle management using WebLogic Kubernetes Operator
 
-### Application lifecycle management ###
+## Introduction
 
 This tutorial creates a Docker image with a WebLogic domain inside the image deployment. This means that all the artefacts, including the deployed applications and domain-related files, are stored within the image. This results in a new WebLogic Docker image every time the application is modified. In this, widely adopted approach, the image is the packaging unit instead of the Web/Enterprise Application Archive (*war*, *ear*).
 
 For the purpose of this lab, we created another image that contains a domain and an updated version of the application (green title on the main page). This image is available at `iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:2.0`.
 
-#### Modify the domain.yaml ####
+## **STEP 1**: Upgrade WebLogic container packaged application using domain resource definition
 
 Edit  your domain resource definition (*domain.yaml*) and modify the image location. The modified line with image should appear as follows:
 ```yaml

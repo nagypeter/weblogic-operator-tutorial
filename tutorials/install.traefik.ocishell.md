@@ -1,12 +1,12 @@
-# Oracle WebLogic Server Kubernetes Operator Tutorial #
+# Install and configure Traefik
 
-### Install and configure Traefik  ###
+## Introduction
 
 The Oracle WebLogic Server Kubernetes Operator supports three load balancers: Traefik, Voyager, and Apache. Samples are provided in the [documentation](https://github.com/oracle/weblogic-kubernetes-operator/blob/v2.5.0/kubernetes/samples/charts/README.md).
 
 This tutorial demonstrates how to install the [Traefik](https://traefik.io/) Ingress controller to provide load balancing for WebLogic clusters.
 
-#### Install the Traefik operator with a Helm chart ####
+## **STEP 1**: Install the Traefik operator with a Helm chart
 
 Change to your operator local Git repository folder.
 ```bash

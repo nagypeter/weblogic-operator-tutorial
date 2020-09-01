@@ -1,6 +1,6 @@
-# Oracle WebLogic Server Kubernetes Operator Tutorial #
+# Assign WebLogic pods to nodes
 
-### Assign WebLogic pods to nodes ###
+## Introduction
 
 When you create a Managed Server (pod), the Kubernetes scheduler selects a node for the pod to run on. The scheduler ensures that, for each resource type, the sum of the resource requests of the scheduled containers is less than the capacity of the node. Note that although actual memory or CPU resource usage on nodes is very low, the scheduler still refuses to place a pod on a node if the capacity check fails.
 
@@ -13,13 +13,9 @@ However, you can create affinity with a `nodeSelector` to constrain a pod to be 
 
 In this lab, you will learn how to assign pods to individual Managed Server instances and or the entire domain to particular node or nodes.
 
-#### Create affinity  ####
+## **STEP 1**: Assign particular servers to specific nodes
 
-Create affinity by assigning particular servers to specific nodes.
-
-##### Assign particular servers to specific nodes #####
-
-To assign pods to nodes, you need to label the desired node with a custom tag. Then, define the `nodeSelector` property in the domain resource definition and set the value of the label you applied on the node. Finally, apply the domain configuration changes.
+Create affinity by assigning particular servers to specific nodes. To assign pods to nodes, you need to label the desired node with a custom tag. Then, define the `nodeSelector` property in the domain resource definition and set the value of the label you applied on the node. Finally, apply the domain configuration changes.
 
 First, get the node names using `kubectl get node`:
 ```bash
@@ -44,7 +40,7 @@ sample-domain1-managed-server3   1/1       Running   0          1m        10.244
 
 As you can see from the result, Kubernetes evenly deployed the 3 Managed Servers to the 3 worker nodes. In this case, we can, for example, evacuate one of the nodes. If you have an empty node scenario, then you can assign 1 Managed Server/pod to 1 node, just adopt the labelling and domain resource definition modification accordingly.
 
-###### Labelling ######
+## **STEP 2**: Labelling
 
 Knowing the node names, select one which you want to be empty. In this example, this node will be: `130.61.110.174`
 
@@ -55,7 +51,7 @@ node/130.61.52.240 labeled
 $ kubectl label nodes 130.61.84.41 wlservers2=true
 node/130.61.84.41 labeled
 ```
-###### Modify the domain resource definition ######
+## **STEP 3**: Modify the domain resource definition
 
 Open your `domain.yaml` file in text editor and find the `adminServer:` entry and insert a new property where you can define the placement of the Administration Server. The provided `domain.yaml` already contains this part (starting at around line #101); you just need to enable it by removing the `#` (comment sign) at the beginning of the lines:
 ```yaml
@@ -102,16 +98,16 @@ sample-domain1-managed-server2   1/1       Running       0          56s       10
 sample-domain1-managed-server3   1/1       Running       0          2m        10.244.2.37   130.61.84.41    <none>
 ```
 
-##### Delete the label and `nodeSelector` entries in `domain.yaml` #####
+## **STEP 4**: Delete the node assignment
 
-To delete the node assignment, delete the node's label using the `kubectl label node <nodename> <labelname>-` command but replace the node name properly:
+To delete the node assignment, delete the node's label using the `kubectl label nodes <nodename> <labelname>-` command but replace the node name properly:
 ```bash
 $ kubectl label nodes 130.61.52.240 wlservers1-
 node/130.61.52.240 labeled
 $ kubectl label nodes 130.61.84.41 wlservers2-
 node/130.61.84.41 labeled
 ```
-Delete or comment out the entries you added for the node assignment in your `domain.yaml` and apply:
+Delete or comment out the (`nodeSelector`) entries you added for the node assignment in your `domain.yaml` and apply:
 ```
 $ kubectl apply -f ~/domain.yaml
 domain.weblogic.oracle/sample-domain1 configured

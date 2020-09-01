@@ -1,10 +1,12 @@
-# Oracle WebLogic Server Kubernetes Operator Tutorial #
+# Install and configure the operator
 
-### Install and configure the operator  ###
+## Introduction
 
 An operator is an application-specific controller that extends Kubernetes to create, configure, and manage instances of complex applications. The Oracle WebLogic Server Kubernetes Operator (the "operator") simplifies the management and operation of WebLogic domains and deployments.
 
-#### Clone the operator repository to a Cloud Shell instance ####
+This lab walks you through the steps to prepare OCI Cloud shell (client) environment and install WebLogic Kubernetes Operator.
+
+## **STEP 1**: Clone the operator repository to a Cloud Shell instance
 First, clone the operator git repository to OCI Cloud Shell.
 ```bash
 $ git clone https://github.com/oracle/weblogic-kubernetes-operator.git -b v2.5.0
@@ -31,7 +33,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 
 Checking out files: 100% (8396/8396), done.
 ```
-#### Prepare the environment ####
+## **STEP 2**: Prepare the Kubernetes environment
 Kubernetes distinguishes between the concept of a user account and a service account for a number of reasons. The main reason is that user accounts are for humans while service accounts are for processes, which run in pods. The operator also requires service accounts.  If a service account is not specified, it defaults to `default` (for example, the namespace's default service account). If you want to use a different service account, then you must create the operator's namespace and the service account before installing the operator Helm chart.
 
 Thus, create the operator's namespace in advance:
@@ -46,7 +48,7 @@ Finally, add a stable repository to Helm, which will be needed later for 3rd par
 ```bash
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
-#### Install the operator using Helm ####
+## **STEP 3**: Install the operator using Helm
 Before you execute the operator `helm` install, make sure that you are in the operator's local Git repository folder.
 ```bash
 cd ~/weblogic-kubernetes-operator/

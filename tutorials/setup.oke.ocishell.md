@@ -32,15 +32,15 @@ For more information about OKE and custom cluster deployment, see the [Oracle Co
 
 Sign in using the Cloud Services link you got in an email during the registration process. If this is your first time signing in, you have to change the generated first-time password.
 
-![alt text](../../tutorials/images/oke/001.cloud.link.email.png)
+![alt text](images/oke/001.cloud.link.email.png)
 
 Use the user name and password distributed by the instructor. Click **Sign In**.
 
-![alt text](../../tutorials/images/oke/002.login.png)
+![alt text](images/oke/002.login.png)
 
 Select the menu icon in the top left corner and then select **Compute**.
 
-![alt text](../../tutorials/images/oke/003.compute.console.png)
+![alt text](images/oke/003.compute.console.png)
 
 That opens the OCI console.
 
@@ -52,11 +52,11 @@ Optionally, create more resource policies if you want to control which groups ca
 
 Open the navigation menu. Under **Identity**, select **Policies**.
 
-![alt text](../../tutorials/images/oke/004.oci.console.png)
+![alt text](images/oke/004.oci.console.png)
 
 In the left side menu, select a "root" compartment for your account (see screenshot below). A list of the policies in the compartment you're viewing is displayed. If you want to attach the policy to a compartment other than the one you're viewing, select the desired compartment from the drop down list on the left. Click **Create Policy**.
 
-![alt text](../../tutorials/images/oke/005.policies.png)
+![alt text](images/oke/005.policies.png)
 
 Enter the following:
 
@@ -68,7 +68,7 @@ Enter the following:
 
 Click **Create**.
 
-![alt text](../../tutorials/images/oke/006.create.oke.policy.png)
+![alt text](images/oke/006.create.oke.policy.png)
 
 ## **STEP 3**: Create an OKE cluster ####
 
@@ -76,15 +76,15 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
 In the Console, open the navigation menu. Under *Solutions, Platform and Edge*, go to *Developer Services* and select **Container Clusters (OKE)**.
 
-![alt text](../../tutorials/images/oke/007.clusters.png)
+![alt text](images/oke/007.clusters.png)
 
 On the Cluster List page, click **Create Cluster**.
 
-![alt text](../../tutorials/images/oke/008.create.cluster.png)
+![alt text](images/oke/008.create.cluster.png)
 
 In the Create Cluster Solution dialog, select *Quick Create* and click **Launch Workflow**.
 
-![alt text](../../tutorials/images/oke/009.quick.1.png)
+![alt text](images/oke/009.quick.1.png)
 
 Select **Quick Create** to create a new cluster with the default settings, along with new network resources for the new cluster.
 
@@ -102,17 +102,17 @@ Specify the following configuration details on the Cluster Creation page:
 
 Click **Next** to review the details you entered for the new cluster.
 
-![alt text](../../tutorials/images/oke/009.quick.details.ocishell.1.png)
-![alt text](../../tutorials/images/oke/009.quick.details.ocishell.2.png)
+![alt text](images/oke/009.quick.details.ocishell.1.png)
+![alt text](images/oke/009.quick.details.ocishell.2.png)
 
 On the *Review* page, click **Submit** to create the new network resources and the new cluster.
 
-![alt text](../../tutorials/images/oke/009.quick.review.ocishell.1.png)
-![alt text](../../tutorials/images/oke/009.quick.review.ocishell.2.png)
+![alt text](images/oke/009.quick.review.ocishell.1.png)
+![alt text](images/oke/009.quick.review.ocishell.2.png)
 
 You see the network resources being created for you.
 
-![alt text](../../tutorials/images/oke/009.quick.submitted.ocishell.png)
+![alt text](images/oke/009.quick.submitted.ocishell.png)
 
 Click **Close** and the new cluster is shown on the *Cluster Details* page. When it has been created, the new cluster has a status of *Active*.
 
@@ -122,11 +122,11 @@ Oracle Cloud Infrastructure (OCI) Cloud Shell is a web browser-based terminal, a
 
 Click the Cloud Shell icon in the Console header (top right area in the browser).
 
-![alt text](../../tutorials/images/oke/020.ocishell.start.png)
+![alt text](images/oke/020.ocishell.start.png)
 
 Wait a few seconds for the Cloud Shell to appear.
 
-![alt text](../../tutorials/images/oke/021.ocishell.started.png)
+![alt text](images/oke/021.ocishell.started.png)
 
 You can minimize and restore the terminal size at any time.
 
@@ -136,13 +136,13 @@ Your Cloud Shell comes with the OCI CLI pre-authenticated, so there’s no setup
 
 To complete the `kubectl` configuration, click **Access Kubeconfig** on your cluster detail page. (If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Clusters**. Select your cluster and go the detail page.
 
-![alt text](../../tutorials/images/oke/022.ocishell.access.config.png)
+![alt text](images/oke/022.ocishell.access.config.png)
 
 A dialog appears which contains the customized OCI command that you need to execute, to create a Kubernetes configuration file.
 
 Select the **Copy** link to copy the `oci ce...` command to Cloud Shell, then close the configuration dialog before you paste the command into the terminal.
 
-![alt text](../../tutorials/images/oke/023.ocishell.config.dialog.png)
+![alt text](images/oke/023.ocishell.config.dialog.png)
 For example, the command looks like the following:
 ```bash
 $ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.THIS_IS_EXAMPLE_DONT_COPY_PASTE_FROM_HERE --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
@@ -158,7 +158,7 @@ NAME        STATUS   ROLES   AGE    VERSION
 ```
 If you see the node's information, then the configuration was successful.
 
-![alt text](../../tutorials/images/oke/024.ocishell.config.complete.png)
+![alt text](images/oke/024.ocishell.config.complete.png)
 
 ## **STEP 6**: Set up the RBAC policy for the OKE cluster
 
@@ -166,7 +166,7 @@ In order to have permission to access the Kubernetes cluster, you need to author
 
 In the Console, select your OCI user name and select User Settings. On the user details page, you will find the user OCID. Select Copy and paste it temporarily in a text editor.
 
-![alt text](../../tutorials/images/oke/010.user.ocid.png)
+![alt text](images/oke/010.user.ocid.png)
 
 Then execute the role binding command using your(!) user OCID:
 ```bash

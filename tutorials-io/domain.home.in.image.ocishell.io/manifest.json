@@ -16,27 +16,27 @@
         },
         {
             "title": "Lab 2: Install the WebLogic Server Kubernetes Operator",
-            "filename": "../../setup/setup.md"
+            "filename": "../../tutorials/install.operator.ocishell.md"
         },
         {
             "title": "Lab 3: Install a Traefik software load balancer",
-            "filename": "../../data-load/data-load.md"
+            "filename": "../../tutorials/install.traefik.ocishell.md"
         },
         {
             "title": "Lab 4: Deploy a WebLogic domain",
-            "filename": "../../query/query.md"
+            "filename": "../../tutorials/deploy.weblogic_short.ocishell.md"
         },
         {
             "title": "Lab 5: Scale a WebLogic cluster",
-            "filename": "../../analyze/analyze.md"
+            "filename": "../../tutorials/scale.weblogic.ocishell.md"
         },
         {
             "title": "Lab 6 (OPTIONAL): Update a deployed application by a rolling restart of the new image",
-            "filename": "../../visualize/visualize.md"
+            "filename": "../../tutorials/update.application_short.ocishell.md"
         },
         {
             "title": "Lab 7 (OPTIONAL): Assign WebLogic pods to nodes (a scenario simulating a cluster spanning 2 data centers)",
-            "filename": "../../visualize/visualize.md"
+            "filename": "../../tutorials/node.selector.ocishell.md"
         }
     ]
 }
