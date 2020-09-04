@@ -66,7 +66,7 @@ Note the values:
 
 - **name**: The name of the resource.
 - **namespace**: Where the operator is deployed.
-- **image**: The prebuilt operator 2.5.0 image, available on the public Docker hub.
+- **image**: The prebuilt operator 3.0.0 image, available on the public Docker hub.
 - **serviceAccount**: The service account required to run the operator.
 - **domainNamespaces**: The namespaces where WebLogic domains are deployed in order to control them. Note, the WebLogic domain is not deployed yet, so this value will be updated when namespaces are created for WebLogic deployment.
 
