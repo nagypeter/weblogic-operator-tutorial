@@ -24,7 +24,7 @@ clusters:
 ```
 Modify `replicas` to 3 and save the changes. You can use the `vi` editor for example:
 ```bash
-vi ~/domain.yaml`
+vi ~/domain.yaml
 ```
 Apply the changes using `kubectl`:
 ```bash

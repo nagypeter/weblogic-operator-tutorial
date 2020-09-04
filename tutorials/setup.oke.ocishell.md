@@ -28,29 +28,13 @@ This tutorial shows you the way the *Quick Start* feature creates and configures
 
 For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
-## **STEP 1**: Open the OCI console
-
-Sign in using the Cloud Services link you got in an email during the registration process. If this is your first time signing in, you have to change the generated first-time password.
-
-![](images/oke/001.cloud.link.email.png)
-
-Use the user name and password distributed by the instructor. Click **Sign In**.
-
-![](images/oke/002.login.png)
-
-Select the menu icon in the top left corner and then select **Compute**.
-
-![](images/oke/003.compute.console.png)
-
-That opens the OCI console.
-
-## **STEP 2**: Create a policy
+## **STEP 1**: Create a policy
 
 A service policy allows OKE to create resources in your tenancy, such as compute. An OKE resource policy or policies let you specify which groups in your tenancy can perform certain tasks with the OKE API.
 
 Optionally, create more resource policies if you want to control which groups can access different parts of the OKE service.
 
-Open the navigation menu. Under **Identity**, select **Policies**.
+Open the OCI Console and click the navigation menu. Under **Identity**, select **Policies**.
 
 ![](images/oke/004.oci.console.png)
 
@@ -70,7 +54,7 @@ Click **Create**.
 
 ![](images/oke/006.create.oke.policy.png)
 
-## **STEP 3**: Create an OKE cluster ####
+## **STEP 2**: Create an OKE cluster ####
 
 The *Quick Create* feature uses the default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
@@ -102,13 +86,11 @@ Specify the following configuration details on the Cluster Creation page:
 
 Click **Next** to review the details you entered for the new cluster.
 
-![](images/oke/009.quick.details.ocishell.1.png)
-![](images/oke/009.quick.details.ocishell.2.png)
+![](images/oke/009.quick.details.ocishell.png)
 
 On the *Review* page, click **Submit** to create the new network resources and the new cluster.
 
-![](images/oke/009.quick.review.ocishell.1.png)
-![](images/oke/009.quick.review.ocishell.2.png)
+![](images/oke/009.quick.review.ocishell.png)
 
 You see the network resources being created for you.
 
@@ -116,65 +98,47 @@ You see the network resources being created for you.
 
 Click **Close** and the new cluster is shown on the *Cluster Details* page. When it has been created, the new cluster has a status of *Active*.
 
-## **STEP 4**: Open OCI Cloud Shell
+## **STEP 3**: Configure `kubectl` (Kubernetes Cluster CLI)
 
 Oracle Cloud Infrastructure (OCI) Cloud Shell is a web browser-based terminal, accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI and other useful tools (*Git, kubectl, helm, OCI CLI*) to complete the operator tutorials. Cloud Shell is accessible from the Console. Your Cloud Shell will appear in the Oracle Cloud Console as a persistent frame of the Console, and will stay active as you navigate to different pages of the Console.
 
-Click the Cloud Shell icon in the Console header (top right area in the browser).
+You will use Cloud Shell to complete this workshop.
 
-![](images/oke/020.ocishell.start.png)
+In order for `kubectl` to find and access a Kubernetes cluster, it needs a `kubeconfig` file. This will be generated using the OCI CLI which is pre-authenticated, so there’s no setup to do before you can start using it.
 
-Wait a few seconds for the Cloud Shell to appear.
+Click **Access Kubeconfig** on your cluster detail page. (If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Clusters**. Select your cluster and go the detail page.)
 
-![](images/oke/021.ocishell.started.png)
+![](images/oke/022.ocishell.access.config.2.png)
 
-You can minimize and restore the terminal size at any time.
+A dialog appears which offers to open Cloud Shell and contains the customized OCI command that you need to execute, to create a Kubernetes configuration file.
 
-## **STEP 5**: Configure `kubectl`
+Leave the default *Cloud Shell Access* and first select the **Copy** link to copy the `oci ce...` command to Cloud Shell, then close the configuration dialog before you paste the command into the terminal.
 
-Your Cloud Shell comes with the OCI CLI pre-authenticated, so there’s no setup to do before you can start using it.
+![](images/oke/023.ocishell.config.dialog.copy.png)
 
-To complete the `kubectl` configuration, click **Access Kubeconfig** on your cluster detail page. (If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Clusters**. Select your cluster and go the detail page.
+Now click the **Launch Cloud Shell** to open the built in console.
 
-![](images/oke/022.ocishell.access.config.png)
+![](images/oke/023.ocishell.config.dialog.launch.shell.png)
 
-A dialog appears which contains the customized OCI command that you need to execute, to create a Kubernetes configuration file.
+Copy the command from the clipboard (Ctrl+V or right click and copy) into the Cloud Shell and execute.
 
-Select the **Copy** link to copy the `oci ce...` command to Cloud Shell, then close the configuration dialog before you paste the command into the terminal.
-
-![](images/oke/023.ocishell.config.dialog.png)
 For example, the command looks like the following:
 ```bash
-$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.THIS_IS_EXAMPLE_DONT_COPY_PASTE_FROM_HERE --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
-New config written to the Kubeconfig file /home/peter_nagy/.kube/config
+$ oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.phx.aaaaaaaaaezwen..................zjwgm2tqnjvgc2dey3emnsd --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
+Existing Kubeconfig file found at /home/peter_nagy/.kube/config and new config merged into it
 ```
 Now check that `kubectl` is working, for example, using the `get node` command:
 ```bash
 $ kubectl get node
 NAME        STATUS   ROLES   AGE    VERSION
-10.0.10.2   Ready    node    117m   v1.15.7
-10.0.10.3   Ready    node    116m   v1.15.7
-10.0.10.4   Ready    node    117m   v1.15.7
+10.0.10.2   Ready    node    56m   v1.16.8
+10.0.10.3   Ready    node    56m   v1.16.8
+10.0.10.4   Ready    node    56m   v1.16.8
 ```
 If you see the node's information, then the configuration was successful.
 
 ![](images/oke/024.ocishell.config.complete.png)
 
-## **STEP 6**: Set up the RBAC policy for the OKE cluster
+You can always minimize and restore the terminal size at any time using the buttons on the top right corner of the Cloud Shell.
 
-In order to have permission to access the Kubernetes cluster, you need to authorize your OCI account as a cluster-admin on the OCI Container Engine for Kubernetes cluster. This will require your user OCID.
-
-In the Console, select your OCI user name and select User Settings. On the user details page, you will find the user OCID. Select Copy and paste it temporarily in a text editor.
-
-![](images/oke/010.user.ocid.png)
-
-Then execute the role binding command using your(!) user OCID:
-```bash
-kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=<YOUR_USER_OCID>
-```
-For example:
-```bash
-$ kubectl create clusterrolebinding my-cluster-admin-binding --clusterrole=cluster-admin --user=ocid1.user.oc1..AGAIN_THIS_IS_EXAMPLE
-clusterrolebinding.rbac.authorization.k8s.io/my-cluster-admin-binding created
-```
-Congratulation, now your OCI OKE environment is ready to deploy your WebLogic domain.
+![](images/oke/025.ocishell.minimize.restore.png)

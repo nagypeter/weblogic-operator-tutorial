@@ -53,9 +53,9 @@ To deploy WebLogic domain, you need to create a domain resource definition which
 
 We provided for you a `domain.yaml` file that contains a YAML representation of the custom resource object. Please copy it locally:
 ```bash
-curl -LSs https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/master/k8s/domain_short.yaml >~/domain.yaml
+curl -LSs https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/livelabs/k8s/domain_short.v8.yaml >~/domain.yaml
 ```
-Review it in your favorite editor or a [browser](../domain.yaml).
+Review it in your favorite editor or a [browser](https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/livelabs/k8s/domain_short.v8.yaml).
 
 Create the domain custom resource object with the following command:
 ```bash

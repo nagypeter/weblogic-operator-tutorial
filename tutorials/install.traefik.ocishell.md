@@ -53,23 +53,23 @@ NOTES:
 The Traefik installation is basically done. Verify the Traefik (load balancer) services:
 ```bash
 kubectl get service -n traefik
-NAME                         TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
-traefik-operator             LoadBalancer   10.96.227.82   158.101.24.114   443:30299/TCP,80:31457/TCP   2m27s
-traefik-operator-dashboard   ClusterIP      10.96.53.132   <none>           80/TCP                       2m27s
+NAME                         TYPE           CLUSTER-IP     EXTERNAL-IP       PORT(S)                      AGE
+traefik-operator             LoadBalancer   10.96.50.120   129.146.148.215   443:31388/TCP,80:31282/TCP   48s
+traefik-operator-dashboard   ClusterIP      10.96.206.52   <none>            80/TCP                       48s
 ```
 Please note the EXTERNAL-IP of the *traefik-operator* service. This is the public IP address of the load balancer that you will use to access the WebLogic Server Administration Console and the sample application.
 
 To print only the public IP address, execute this command:
 ```bash
-$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
-158.101.24.114
+kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+129.146.148.215
 ```
 
 Verify the `helm` charts:
 ```bash
-$ helm list -n traefik
+helm list -n traefik
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
-traefik-operator        traefik         1               2020-03-06 20:31:53.069061578 +0000 UTC deployed        traefik-1.86.2  1.7.20  
+traefik-operator        traefik         1               2020-09-03 13:50:09.199419556 +0000 UTC deployed        traefik-1.87.2  1.7.24
 ```
 You can also access the Traefik dashboard using `curl`. Use the `EXTERNAL-IP` address from the result above:
 
@@ -77,5 +77,5 @@ You can also access the Traefik dashboard using `curl`. Use the `EXTERNAL-IP` ad
 
 For example:
 
-    $ curl -H 'host: traefik.example.com' http://158.101.24.114
+    curl -H 'host: traefik.example.com' http://129.146.148.215
     <a href="/dashboard/">Found</a>.
