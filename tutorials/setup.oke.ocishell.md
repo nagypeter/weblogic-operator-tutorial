@@ -92,7 +92,9 @@ You see the network resources being created for you.
 
 ![](images/oke/009.quick.submitted.ocishell.png)
 
-Click **Close** and the new cluster is shown on the *Cluster Details* page. When it has been created, the new cluster has a status of *Active*.
+Wait until request to create node pool is initiated and then click **Close**. Then the new cluster is shown on the *Cluster Details* page. When the master nodes are created the new cluster gains a status of *Active* (it takes about 7 minutes). You may continue your labs then.
+
+![](images/oke/009.cluster.master.active.png)
 
 ## **STEP 3**: Configure `kubectl` (Kubernetes Cluster CLI)
 

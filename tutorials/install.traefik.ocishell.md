@@ -71,11 +71,3 @@ helm list -n traefik
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
 traefik-operator        traefik         1               2020-09-03 13:50:09.199419556 +0000 UTC deployed        traefik-1.87.2  1.7.24
 ```
-You can also access the Traefik dashboard using `curl`. Use the `EXTERNAL-IP` address from the result above:
-
-    curl -H 'host: traefik.example.com' http://EXTERNAL_IP_ADDRESS
-
-For example:
-
-    curl -H 'host: traefik.example.com' http://129.146.148.215
-    <a href="/dashboard/">Found</a>.
