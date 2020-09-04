@@ -70,23 +70,19 @@ In the Create Cluster Solution dialog, select *Quick Create* and click **Launch 
 
 ![](images/oke/009.quick.1.png)
 
-Select **Quick Create** to create a new cluster with the default settings, along with new network resources for the new cluster.
-
-The Create Virtual Cloud Network panel shows the network resources that will be created for you by default, namely a VCN, two load balancer subnets, and three worker node subnets.
+**Quick Create** will create a new cluster with default settings, along with new network resources for the new cluster.
 
 Specify the following configuration details on the Cluster Creation page:
 - **Name**: The name of the cluster. Leave the default value.
 - **Compartment**: The name of the compartment. Leave the default value.
-- **Kubernetes version**: The version of Kubernetes. Leave the default value. (Don't select version 16 even if it is default version; please select version 15 in such cases.)
-- **Choose Visibility Type**: Is the cluster going to be routable or not. Leave the default value.
+- **Kubernetes version**: The version of Kubernetes. Leave the default value which should be `1.16.8`.
+- **Choose Visibility Type**: Is the cluster going to be routable or not. Leave the default *Private* value.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select the available *VM.Standard2.1*.
 - **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*
-- **Kubernetes Dashboard Enabled**: Leave the default false (`DISABLED`).
-- **Tiller (Helm) Enabled**: Leave the default false (`DISABLED`).
-
-Click **Next** to review the details you entered for the new cluster.
 
 ![](images/oke/009.quick.details.ocishell.png)
+
+Click **Next** to review the details you entered for the new cluster.
 
 On the *Review* page, click **Submit** to create the new network resources and the new cluster.
 
