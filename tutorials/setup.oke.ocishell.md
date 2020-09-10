@@ -28,34 +28,7 @@ This tutorial shows you the way the *Quick Start* feature creates and configures
 
 For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
-## **STEP 1**: Create a policy
-
-A service policy allows OKE to create resources in your tenancy, such as compute. An OKE resource policy or policies let you specify which groups in your tenancy can perform certain tasks with the OKE API.
-
-Optionally, create more resource policies if you want to control which groups can access different parts of the OKE service.
-
-Open the OCI Console and click the navigation menu. Under **Identity**, select **Policies**.
-
-![](images/oke/004.oci.console.png)
-
-In the left side menu, select a "root" compartment for your account (see screenshot below). A list of the policies in the compartment you're viewing is displayed. If you want to attach the policy to a compartment other than the one you're viewing, select the desired compartment from the drop down list on the left. Click **Create Policy**.
-
-![](images/oke/005.policies.png)
-
-Enter the following:
-
-- **Name:** A unique name for the policy. The name must be unique across all policies in your tenancy. You cannot change this later.
-- **Description:** A user friendly description.
-- **Policy Versioning:** Select **Keep Policy Current**. It ensures that the policy stays current with any future changes to the service's definitions of verbs and resources.
-- **Compartment:** Select the *root* compartment. If it isn't a Free Tier environment or you created a different compartment for this workshop then select that one.
-- **Statement:** A policy statement. It MUST be: `allow service OKE to manage all-resources in tenancy`.
-- **Tags:** Don't apply tags.
-
-Click **Create**.
-
-![](images/oke/006.create.oke.policy.png)
-
-## **STEP 2**: Create an OKE cluster ####
+## **STEP 1**: Create an OKE cluster ####
 
 The *Quick Create* feature uses the default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
@@ -97,7 +70,7 @@ Wait until request to create node pool is initiated and then click **Close**. Th
 
 ![](images/oke/009.cluster.master.active.png)
 
-## **STEP 3**: Configure `kubectl` (Kubernetes Cluster CLI)
+## **STEP 2**: Configure `kubectl` (Kubernetes Cluster CLI)
 
 Oracle Cloud Infrastructure (OCI) Cloud Shell is a web browser-based terminal, accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI and other useful tools (*Git, kubectl, helm, OCI CLI*) to complete the operator tutorials. Cloud Shell is accessible from the Console. Your Cloud Shell will appear in the Oracle Cloud Console as a persistent frame of the Console, and will stay active as you navigate to different pages of the Console.
 

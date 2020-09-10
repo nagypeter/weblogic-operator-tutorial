@@ -52,7 +52,7 @@ NOTES:
 
 The Traefik installation is basically done. Verify the Traefik (load balancer) services:
 ```bash
-kubectl get service -n traefik
+$ kubectl get service -n traefik
 NAME                         TYPE           CLUSTER-IP     EXTERNAL-IP       PORT(S)                      AGE
 traefik-operator             LoadBalancer   10.96.50.120   129.146.148.215   443:31388/TCP,80:31282/TCP   48s
 traefik-operator-dashboard   ClusterIP      10.96.206.52   <none>            80/TCP                       48s
@@ -61,13 +61,13 @@ Please note the EXTERNAL-IP of the *traefik-operator* service. This is the publi
 
 To print only the public IP address, execute this command:
 ```bash
-kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
 129.146.148.215
 ```
 
 Verify the `helm` charts:
 ```bash
-helm list -n traefik
+$ helm list -n traefik
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
 traefik-operator        traefik         1               2020-09-03 13:50:09.199419556 +0000 UTC deployed        traefik-1.87.2  1.7.24
 ```

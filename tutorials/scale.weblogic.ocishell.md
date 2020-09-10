@@ -32,7 +32,7 @@ kubectl apply -f ~/domain.yaml
 ```
 Check the changes in the number of pods using `kubectl`:
 ```bash
-kubectl get po -n sample-domain1-ns
+$ kubectl get po -n sample-domain1-ns
 NAME                             READY     STATUS        RESTARTS   AGE
 sample-domain1-admin-server      1/1       Running       0          57m
 sample-domain1-managed-server1   1/1       Running       0          56m

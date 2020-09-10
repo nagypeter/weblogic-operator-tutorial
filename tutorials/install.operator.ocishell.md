@@ -9,7 +9,7 @@ This lab walks you through the steps to prepare OCI Cloud shell (client) environ
 ## **STEP 1**: Clone the operator repository to a Cloud Shell instance
 First, clone the operator git repository to OCI Cloud Shell.
 ```bash
-$ git clone https://github.com/oracle/weblogic-kubernetes-operator.git -b v3.0.0
+git clone https://github.com/oracle/weblogic-kubernetes-operator.git -b v3.0.0
 ```
 The output should be similar to the following:
 ```bash
