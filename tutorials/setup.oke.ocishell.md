@@ -47,6 +47,7 @@ Enter the following:
 - **Name:** A unique name for the policy. The name must be unique across all policies in your tenancy. You cannot change this later.
 - **Description:** A user friendly description.
 - **Policy Versioning:** Select **Keep Policy Current**. It ensures that the policy stays current with any future changes to the service's definitions of verbs and resources.
+- **Compartment:** Select the *root* compartment. If it isn't a Free Tier environment or you created a different compartment for this workshop then select that one.
 - **Statement:** A policy statement. It MUST be: `allow service OKE to manage all-resources in tenancy`.
 - **Tags:** Don't apply tags.
 
