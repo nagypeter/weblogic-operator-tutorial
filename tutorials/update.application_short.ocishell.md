@@ -19,9 +19,6 @@ Apply the domain resource changes:
 ```bash
 <copy>kubectl apply -f ~/domain.yaml</copy>
 ```
-The output should be similar to the following:
-```bash
-```
 You can immediately check the status of your servers/pods. (You should observe the restart of the WLS domain):
 ```bash
 <copy>kubectl get po -n sample-domain1-ns</copy>

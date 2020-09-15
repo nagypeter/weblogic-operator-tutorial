@@ -31,7 +31,7 @@ NAME             STATUS    ROLES     AGE       VERSION
 
 In the case of OKE, the node name can be the public IP address of the node or the subnet's CIDR block's first IP address. But obviously, a unique string which identifies the node.
 
-Now check the current pod allocation using the detailed pod information: `kubectl get pod -n sample-domain1-ns -o wide`:
+Now check the current pod allocation using the detailed pod information:
 ```bash
 <copy>kubectl get pod -n sample-domain1-ns -o wide</copy>
 ```

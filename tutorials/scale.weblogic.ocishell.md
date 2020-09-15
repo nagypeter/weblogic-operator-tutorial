@@ -54,7 +54,7 @@ kubectl edit domain DOMAIN_UID -n DOMAIN_NAMESPACE
 In case you used the default settings, the syntax is:
 
 ```bash
-kubectl edit domain sample-domain1 -n sample-domain1-ns
+<copy>kubectl edit domain sample-domain1 -n sample-domain1-ns</copy>
 ```
 It will use a `vi`-like editor.
 
