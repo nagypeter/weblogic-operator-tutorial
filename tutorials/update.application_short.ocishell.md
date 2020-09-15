@@ -17,11 +17,17 @@ Don't forget the leading spaces to keep the proper indentation.
 
 Apply the domain resource changes:
 ```bash
-kubectl apply -f ~/domain.yaml
+<copy>kubectl apply -f ~/domain.yaml</copy>
+```
+The output should be similar to the following:
+```bash
 ```
 You can immediately check the status of your servers/pods. (You should observe the restart of the WLS domain):
 ```bash
-$ kubectl get po -n sample-domain1-ns
+<copy>kubectl get po -n sample-domain1-ns</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                             READY     STATUS        RESTARTS   AGE
 sample-domain1-admin-server      1/1       Terminating   0          22m
 sample-domain1-managed-server1   1/1       Running       0          20m

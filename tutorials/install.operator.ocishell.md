@@ -9,7 +9,7 @@ This lab walks you through the steps to prepare OCI Cloud shell (client) environ
 ## **STEP 1**: Clone the operator repository to a Cloud Shell instance
 First, clone the operator git repository to OCI Cloud Shell.
 ```bash
-git clone https://github.com/oracle/weblogic-kubernetes-operator.git -b v3.0.0
+<copy>git clone https://github.com/oracle/weblogic-kubernetes-operator.git -b v3.0.0</copy>
 ```
 The output should be similar to the following:
 ```bash
@@ -38,26 +38,26 @@ Kubernetes distinguishes between the concept of a user account and a service acc
 
 Thus, create the operator's namespace in advance:
 ```bash
-kubectl create namespace sample-weblogic-operator-ns
+<copy>kubectl create namespace sample-weblogic-operator-ns</copy>
 ```
 Create the service account:
 ```bash
-kubectl create serviceaccount -n sample-weblogic-operator-ns sample-weblogic-operator-sa
+<copy>kubectl create serviceaccount -n sample-weblogic-operator-ns sample-weblogic-operator-sa</copy>
 ```
 Finally, add a stable repository to Helm, which will be needed later for 3rd party services.
 ```bash
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+<copy>helm repo add stable https://kubernetes-charts.storage.googleapis.com/</copy>
 ```
 ## **STEP 3**: Install the operator using Helm
 Before you execute the operator `helm` install, make sure that you are in the operator's local Git repository folder.
 ```bash
-cd ~/weblogic-kubernetes-operator/
+<copy>cd ~/weblogic-kubernetes-operator/</copy>
 ```
 Use the `helm install` command to install the operator Helm chart. As part of this, you must specify a "release" name for their operator.
 
 You can override the default configuration values in the operator Helm chart by doing one of the following:
 
-- Creating a [custom YAML](https://github.com/oracle/weblogic-kubernetes-operator/blob/v2.5.0/kubernetes/charts/weblogic-operator/values.yaml) file containing the values to be overridden, and specifying the `--value` option on the Helm command line.
+- Creating a [custom YAML](https://github.com/oracle/weblogic-kubernetes-operator/blob/v3.0.0/kubernetes/charts/weblogic-operator/values.yaml) file containing the values to be overridden, and specifying the `--value` option on the Helm command line.
 - Overriding individual values directly on the Helm command line, using the `--set` option.
 
 Using the last option, simply define overriding values using the `--set` option.
@@ -72,12 +72,12 @@ Note the values:
 
 Execute the following `helm install`:
 ```bash
-helm install sample-weblogic-operator \
+<copy>helm install sample-weblogic-operator \
   kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
   --set image=oracle/weblogic-kubernetes-operator:3.0.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
-  --set "domainNamespaces={}"
+  --set "domainNamespaces={}"</copy>
 ```
 The output will be similar to the following:
 ```bash
@@ -90,13 +90,19 @@ TEST SUITE: None
 ```
 Check the operator pod:
 ```bash
-$ kubectl get po -n sample-weblogic-operator-ns
+<copy>kubectl get po -n sample-weblogic-operator-ns</copy>
+```
+The output will be similar to the following:
+```bash
 NAME                                 READY   STATUS    RESTARTS   AGE
 weblogic-operator-67d66b4576-jkp9g   1/1     Running   0          41s
 ```
 Check the operator Helm chart:
 ```bash
-$ helm list -n sample-weblogic-operator-ns
+<copy>helm list -n sample-weblogic-operator-ns</copy>
+```
+The output will be similar to the following:
+```bash
 NAME                            NAMESPACE                       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
 sample-weblogic-operator        sample-weblogic-operator-ns     1               2020-09-03 13:48:24.187689635 +0000 UTC deployed        weblogic-operator-3.0.0
 ```

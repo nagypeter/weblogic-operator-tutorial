@@ -8,13 +8,13 @@ This lab walks you through the steps to deploy and configure WebLogic Kubernetes
 
 Create the domain namespace:
 ```bash
-kubectl create namespace sample-domain1-ns
+<copy>kubectl create namespace sample-domain1-ns</copy>
 ```
 Create a Kubernetes secret containing the Administration Server boot credentials:
 ```bash
-kubectl -n sample-domain1-ns create secret generic sample-domain1-weblogic-credentials \
+<copy>kubectl -n sample-domain1-ns create secret generic sample-domain1-weblogic-credentials \
   --from-literal=username=weblogic \
-  --from-literal=password=welcome1
+  --from-literal=password=welcome1</copy>
 ```
 
 ## **STEP 2**: Update the Traefik load balancer and operator configuration
@@ -24,26 +24,26 @@ After you have your domain namespace (the WebLogic domain is not deployed yet), 
 Before executing the domain `helm` install, be sure that you are in the WebLogic operator local Git repository folder.
 
 ```bash
-cd ~/weblogic-kubernetes-operator/
+<copy>cd ~/weblogic-kubernetes-operator/</copy>
 ```
 To update the operator, execute the following `helm upgrade` command:
 ```bash
-helm upgrade sample-weblogic-operator \
+<copy>helm upgrade sample-weblogic-operator \
   kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
   --reuse-values \
   --set "domainNamespaces={sample-domain1-ns}" \
-  --wait
+  --wait</copy>
 ```
 
 To update Traefik, execute the following `helm upgrade` command:
 ```bash
-helm upgrade traefik-operator \
+<copy>helm upgrade traefik-operator \
   stable/traefik \
   --namespace traefik \
   --reuse-values \
   --set "kubernetes.namespaces={traefik,sample-domain1-ns}" \
-  --wait
+  --wait</copy>
 ```
 Note that in both cases, the only updated parameter is the domain namespace.
 
@@ -53,23 +53,29 @@ To deploy WebLogic domain, you need to create a domain resource definition which
 
 We provided for you a `domain.yaml` file that contains a YAML representation of the custom resource object. Please copy it locally:
 ```bash
-curl -LSs https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/livelabs/k8s/domain_short.v8.yaml >~/domain.yaml
+<copy>curl -LSs https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/livelabs/k8s/domain_short.v8.yaml >~/domain.yaml</copy>
 ```
 Review it in your favorite editor or a [browser](https://raw.githubusercontent.com/nagypeter/weblogic-operator-tutorial/livelabs/k8s/domain_short.v8.yaml).
 
 Create the domain custom resource object with the following command:
 ```bash
-kubectl apply -f ~/domain.yaml
+<copy>kubectl apply -f ~/domain.yaml</copy>
 ```
 Check the introspector job, which needs to be run first:
 ```bash
-$ kubectl get pod -n sample-domain1-ns
+<copy>kubectl get pod -n sample-domain1-ns</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                                         READY     STATUS              RESTARTS   AGE
 sample-domain1-introspect-domain-job-kcn4n   0/1       ContainerCreating   0          7s
 ```
 Periodically check the pods in the domain namespace and soon you will see the servers starting:
 ```bash
-$ kubectl get po -n sample-domain1-ns -o wide
+<copy>kubectl get po -n sample-domain1-ns -o wide</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                             READY     STATUS    RESTARTS   AGE       IP            NODE            NOMINATED NODE
 sample-domain1-admin-server      1/1       Running   0          2m        10.244.2.10   130.61.84.41    <none>
 sample-domain1-managed-server1   1/1       Running   0          1m        10.244.2.11   130.61.84.41    <none>
@@ -83,7 +89,7 @@ As a simple solution, it's best to configure path routing, which will route exte
 
 Execute the following Ingress resource definition:
 ```bash
-cat << EOF | kubectl apply -f -
+<copy>cat << EOF | kubectl apply -f -
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -105,6 +111,7 @@ spec:
           serviceName: sample-domain1-admin-server
           servicePort: 7001          
 EOF
+</copy>
 ```
 
 
@@ -115,8 +122,11 @@ Once the Ingress has been created construct the URL of the Administration Consol
 `http://EXTERNAL-IP/console`
 
 The `EXTERNAL-IP` was determined during the Traefik install. If you forgot to note it, then execute the following command to get the public IP address:
+```bash
+<copy>kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'</copy>
 ```
-$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+The output should be similar to the following:
+```bash
 129.213.172.44
 ```
 Construct the Administration Console URL and open it in a browser:

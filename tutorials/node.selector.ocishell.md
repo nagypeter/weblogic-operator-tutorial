@@ -19,7 +19,10 @@ Create affinity by assigning particular servers to specific nodes. To assign pod
 
 First, get the node names using `kubectl get node`:
 ```bash
-$ kubectl get node
+<copy>kubectl get node</copy>
+```
+The output should be similar to the following:
+```bash
 NAME             STATUS    ROLES     AGE       VERSION
 130.61.110.174   Ready     node      11d       v1.11.5
 130.61.52.240    Ready     node      11d       v1.11.5
@@ -30,7 +33,10 @@ In the case of OKE, the node name can be the public IP address of the node or th
 
 Now check the current pod allocation using the detailed pod information: `kubectl get pod -n sample-domain1-ns -o wide`:
 ```bash
-$ kubectl get pod -n sample-domain1-ns -o wide
+<copy>kubectl get pod -n sample-domain1-ns -o wide</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                             READY     STATUS    RESTARTS   AGE       IP            NODE             NOMINATED NODE
 sample-domain1-admin-server      1/1       Running   0          2m        10.244.2.33   130.61.84.41     <none>
 sample-domain1-managed-server1   1/1       Running   0          1m        10.244.1.8    130.61.52.240    <none>
@@ -44,7 +50,11 @@ As you can see from the result, Kubernetes evenly deployed the 3 Managed Servers
 
 Knowing the node names, select one which you want to be empty. In this example, this node will be: `130.61.110.174`
 
-Label the other nodes. The label can be any string, but let's use `wlservers1` and `wlservers2`. Execute the `kubectl label nodes <nodename> <labelname>=true` command but replace your node name and label properly:
+Label the other nodes. The label can be any string, but let's use `wlservers1` and `wlservers2`. Execute the
+```bash
+<copy>kubectl label nodes <YOUR_NODE_NAME> <LABEL_NAME>=true</copy>
+```
+command but replace your node name and label properly e.g.:
 ```bash
 $ kubectl label nodes 130.61.52.240 wlservers1=true
 node/130.61.52.240 labeled
@@ -62,7 +72,7 @@ adminServer:
       wlservers2: true
 ```
 Assign 2-2 servers (including the Administration Server) to 1-1 labelled node.
-You can double check the syntax in the sample [domain.yaml](../domain.yaml) where this part is in a comment.
+You can double check the syntax in the sample [domain.yaml](../k8s/domain_short.v8.yaml) where this part is in a comment.
 
 For the Managed Servers, you have to insert `managedServers:`, which has to be at the same level (indentation) with `adminServer:`. In this property, you need to use the WebLogic Server name to identify the pod. The server name is defined during WebLogic image creation and if you followed this tutorial, it is `managed-serverX`.
 ```yaml
@@ -85,12 +95,18 @@ spec:
 ```
 Keep the proper indentation. Save the changes and apply the new domain resource definition.
 ```bash
-$ kubectl apply -f ~/domain.yaml
+<copy>kubectl apply -f ~/domain.yaml</copy>
+```
+The output should be similar to the following:
+```bash
 domain.weblogic.oracle/sample-domain1 configured
 ```
 The operator according to the changes will start to relocate servers. Poll the pod information and wait until the expected result:
 ```bash
-$ kubectl get po -n sample-domain1-ns -o wide
+<copy>kubectl get po -n sample-domain1-ns -o wide</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                             READY     STATUS        RESTARTS   AGE       IP            NODE            NOMINATED NODE
 sample-domain1-admin-server      1/1       Running       0          3m        10.244.2.36   130.61.84.41    <none>
 sample-domain1-managed-server1   1/1       Running       0          55m       10.244.1.8    130.61.52.240   <none>
@@ -108,8 +124,11 @@ $ kubectl label nodes 130.61.84.41 wlservers2-
 node/130.61.84.41 labeled
 ```
 Delete or comment out the (`nodeSelector`) entries you added for the node assignment in your `domain.yaml` and apply:
+```bash
+<copy>kubectl apply -f ~/domain.yaml</copy>
 ```
-$ kubectl apply -f ~/domain.yaml
+The output should be similar to the following:
+```bash
 domain.weblogic.oracle/sample-domain1 configured
 ```
 The pod reallocation/restart will happen based on the scheduler decision.

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Oracle WebLogic Server Kubernetes Operator supports three load balancers: Traefik, Voyager, and Apache. Samples are provided in the [documentation](https://github.com/oracle/weblogic-kubernetes-operator/blob/v2.5.0/kubernetes/samples/charts/README.md).
+The Oracle WebLogic Server Kubernetes Operator supports three load balancers: Traefik, Voyager, and Apache. Samples are provided in the [documentation](https://github.com/oracle/weblogic-kubernetes-operator/blob/v3.0.0/kubernetes/samples/charts/README.md).
 
 This tutorial demonstrates how to install the [Traefik](https://traefik.io/) Ingress controller to provide load balancing for WebLogic clusters.
 
@@ -10,20 +10,20 @@ This tutorial demonstrates how to install the [Traefik](https://traefik.io/) Ing
 
 Change to your operator local Git repository folder.
 ```bash
-cd ~/weblogic-kubernetes-operator/
+<copy>cd ~/weblogic-kubernetes-operator/</copy>
 ```
 Create a namespace for Traefik:
 ```bash
-kubectl create namespace traefik
+<copy>kubectl create namespace traefik</copy>
 ```
 Install the Traefik operator in the `traefik` namespace with the provided sample values:
 ```bash
-helm install traefik-operator \
+<copy>helm install traefik-operator \
 stable/traefik \
 --namespace traefik \
 --values kubernetes/samples/charts/traefik/values.yaml  \
 --set "kubernetes.namespaces={traefik}" \
---set "serviceType=LoadBalancer"
+--set "serviceType=LoadBalancer"</copy>
 ```
 
 The output should be similar to the following:
@@ -52,7 +52,10 @@ NOTES:
 
 The Traefik installation is basically done. Verify the Traefik (load balancer) services:
 ```bash
-$ kubectl get service -n traefik
+<copy>kubectl get service -n traefik</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                         TYPE           CLUSTER-IP     EXTERNAL-IP       PORT(S)                      AGE
 traefik-operator             LoadBalancer   10.96.50.120   129.146.148.215   443:31388/TCP,80:31282/TCP   48s
 traefik-operator-dashboard   ClusterIP      10.96.206.52   <none>            80/TCP                       48s
@@ -61,13 +64,19 @@ Please note the EXTERNAL-IP of the *traefik-operator* service. This is the publi
 
 To print only the public IP address, execute this command:
 ```bash
-$ kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'
+<copy>kubectl describe svc traefik-operator --namespace traefik | grep Ingress | awk '{print $3}'</copy>
+```
+The output should be similar to the following:
+```bash
 129.146.148.215
 ```
 
 Verify the `helm` charts:
 ```bash
-$ helm list -n traefik
+<copy>helm list -n traefik</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
 traefik-operator        traefik         1               2020-09-03 13:50:09.199419556 +0000 UTC deployed        traefik-1.87.2  1.7.24
 ```

@@ -24,15 +24,18 @@ clusters:
 ```
 Modify `replicas` to 3 and save the changes. You can use the `vi` editor for example:
 ```bash
-vi ~/domain.yaml
+<copy>vi ~/domain.yaml</copy>
 ```
 Apply the changes using `kubectl`:
 ```bash
-kubectl apply -f ~/domain.yaml
+<copy>kubectl apply -f ~/domain.yaml</copy>
 ```
 Check the changes in the number of pods using `kubectl`:
 ```bash
-$ kubectl get po -n sample-domain1-ns
+<copy>kubectl get po -n sample-domain1-ns</copy>
+```
+The output should be similar to the following:
+```bash
 NAME                             READY     STATUS        RESTARTS   AGE
 sample-domain1-admin-server      1/1       Running       0          57m
 sample-domain1-managed-server1   1/1       Running       0          56m
