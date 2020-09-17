@@ -57,7 +57,7 @@ Use the `helm install` command to install the operator Helm chart. As part of th
 
 You can override the default configuration values in the operator Helm chart by doing one of the following:
 
-- Creating a [custom YAML](https://github.com/oracle/weblogic-kubernetes-operator/blob/v3.0.0/kubernetes/charts/weblogic-operator/values.yaml) file containing the values to be overridden, and specifying the `--value` option on the Helm command line.
+- Creating a [custom YAML](https://github.com/oracle/weblogic-kubernetes-operator/blob/v3.0.0/kubernetes/charts/weblogic-operator/values.yaml) file containing the values to be overridden, and specifying the `--values` option on the Helm command line.
 - Overriding individual values directly on the Helm command line, using the `--set` option.
 
 Using the last option, simply define overriding values using the `--set` option.
