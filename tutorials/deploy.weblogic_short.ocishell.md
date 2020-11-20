@@ -37,7 +37,7 @@ helm upgrade sample-weblogic-operator \
 To update Traefik, execute the following `helm upgrade` command:
 ```bash
 helm upgrade traefik-operator \
-  stable/traefik \
+  traefik/traefik \
   --namespace traefik \
   --reuse-values \
   --set "kubernetes.namespaces={traefik,sample-domain1-ns}" \
