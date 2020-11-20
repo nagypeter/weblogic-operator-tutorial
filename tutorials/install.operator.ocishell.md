@@ -44,7 +44,7 @@ kubectl create serviceaccount -n sample-weblogic-operator-ns sample-weblogic-ope
 ```
 Finally, add a stable repository to Helm, which will be needed later for 3rd party services.
 ```bash
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add traefik https://containous.github.io/traefik-helm-chart/
 ```
 #### Install the operator using Helm ####
 Before you execute the operator `helm` install, make sure that you are in the operator's local Git repository folder.
