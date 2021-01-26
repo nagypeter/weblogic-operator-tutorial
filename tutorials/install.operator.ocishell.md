@@ -75,7 +75,7 @@ Execute the following `helm install`:
 <copy>helm install sample-weblogic-operator \
   kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
-  --set image=oracle/weblogic-kubernetes-operator:3.0.0 \
+  --set image=ghcr.io/oracle/weblogic-kubernetes-operator:3.0.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
   --set "domainNamespaces={}"</copy>
 ```
