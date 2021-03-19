@@ -50,7 +50,8 @@ Specify the following configuration details on the Cluster Creation page:
 - **Name**: The name of the cluster. Leave the default value.
 - **Compartment**: The name of the compartment. Leave the default value.
 - **Kubernetes version**: The version of Kubernetes. Leave the default value which should be `1.19.7`.
-- **Choose Visibility Type**: Is the cluster going to be routable or not. Leave the default *Private* value.
+- **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
+- **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select the available *VM.Standard2.1*.
 - **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*
 
