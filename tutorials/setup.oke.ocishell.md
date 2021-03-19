@@ -49,7 +49,7 @@ In the Create Cluster Solution dialog, select *Quick Create* and click **Launch 
 Specify the following configuration details on the Cluster Creation page:
 - **Name**: The name of the cluster. Leave the default value.
 - **Compartment**: The name of the compartment. Leave the default value.
-- **Kubernetes version**: The version of Kubernetes. Leave the default value which should be `1.18.10`.
+- **Kubernetes version**: The version of Kubernetes. Leave the default value which should be `1.19.7`.
 - **Choose Visibility Type**: Is the cluster going to be routable or not. Leave the default *Private* value.
 - **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select the available *VM.Standard2.1*.
 - **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*
@@ -103,9 +103,9 @@ Now check that `kubectl` is working, for example, using the `get node` command:
 ```bash
 $ kubectl get node
 NAME        STATUS   ROLES   AGE    VERSION
-10.0.10.2   Ready    node    56m   v1.18.10
-10.0.10.3   Ready    node    56m   v1.18.10
-10.0.10.4   Ready    node    56m   v1.18.10
+10.0.10.2   Ready    node    56m   v1.19.7
+10.0.10.3   Ready    node    56m   v1.19.7
+10.0.10.4   Ready    node    56m   v1.19.7
 ```
 If you see the node's information, then the configuration was successful.
 
