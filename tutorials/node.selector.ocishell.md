@@ -69,7 +69,7 @@ adminServer:
   [...]
   serverPod:
     nodeSelector:
-      wlservers2: true
+      wlservers2: "true"
 ```
 Assign 2-2 servers (including the Administration Server) to 1-1 labelled node.
 You can double check the syntax in the sample [domain.yaml](../k8s/domain_short.v8.yaml) where this part is in a comment.
@@ -82,15 +82,15 @@ spec:
   - serverName: managed-server1
     serverPod:
       nodeSelector:
-        wlservers1: true
+        wlservers1: "true"
   - serverName: managed-server2
     serverPod:
       nodeSelector:
-        wlservers1: true
+        wlservers1: "true"
   - serverName: managed-server3
     serverPod:
       nodeSelector:
-        wlservers2: true
+        wlservers2: "true"
   [...]
 ```
 Keep the proper indentation. Save the changes and apply the new domain resource definition.

@@ -52,7 +52,7 @@ Specify the following configuration details on the Cluster Creation page:
 - **Kubernetes version**: The version of Kubernetes. Leave the default value which should be `1.19.7`.
 - **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
 - **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
-- **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select the available *VM.Standard2.1*.
+- **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select for example *VM.Standard.E2.1* (which is typically available in Oracle Free Tier Account).
 - **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*
 
 ![](images/oke/009.quick.details.ocishell.png)
@@ -79,7 +79,7 @@ You will use Cloud Shell to complete this workshop.
 
 In order for `kubectl` to find and access a Kubernetes cluster, it needs a `kubeconfig` file. This will be generated using the OCI CLI which is pre-authenticated, so there’s no setup to do before you can start using it.
 
-Click **Access Kubeconfig** on your cluster detail page. (If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Clusters**. Select your cluster and go the detail page.)
+Click **Access Cluster** on your cluster detail page. (If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Clusters**. Select your cluster and go the detail page.)
 
 ![](images/oke/022.ocishell.access.config.2.png)
 

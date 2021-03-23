@@ -8,6 +8,16 @@ This tutorial demonstrates how to install the [Traefik](https://traefik.io/) Ing
 
 ## **STEP 1**: Install the Traefik operator with a Helm chart
 
+First add Traefik repository to Helm.
+```bash
+<copy>helm repo add traefik https://containous.github.io/traefik-helm-chart/</copy>
+```
+
+Update the Helm repository.
+```bash
+<copy>helm repo update</copy>
+```
+
 Change to your operator local Git repository folder.
 ```bash
 <copy>cd ~/weblogic-kubernetes-operator/</copy>
