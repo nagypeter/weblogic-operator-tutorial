@@ -39,9 +39,9 @@ As you can see from the result, Kubernetes evenly deployed the 3 Managed Servers
 
 In this example, the selected node will be: `130.61.84.41`
 
-Label this node. The label can be any string, but for now, use `node-for-weblogic`. Execute the `kubectl label nodes <nodename> <labelname>=true` command but replace your node name and label properly:
+Label this node. The label can be any string, but for now, use `node-for-weblogic`. Execute the `kubectl label nodes <nodename> <labelname>="true"` command but replace your node name and label properly:
 ```bash
-$ kubectl label nodes 130.61.84.41 node-for-weblogic=true
+$ kubectl label nodes 130.61.84.41 node-for-weblogic="true"
 node/130.61.84.41 labeled
 ```
 ###### Modify the domain resource definition ######

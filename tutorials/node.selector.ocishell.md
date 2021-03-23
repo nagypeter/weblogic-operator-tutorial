@@ -52,13 +52,13 @@ Knowing the node names, select one which you want to be empty. In this example, 
 
 Label the other nodes. The label can be any string, but let's use `wlservers1` and `wlservers2`. Execute the
 ```bash
-<copy>kubectl label nodes <YOUR_NODE_NAME> <LABEL_NAME>=true</copy>
+<copy>kubectl label nodes <YOUR_NODE_NAME> <LABEL_NAME>="true"</copy>
 ```
 command but replace your node name and label properly e.g.:
 ```bash
-$ kubectl label nodes 130.61.52.240 wlservers1=true
+$ kubectl label nodes 130.61.52.240 wlservers1="true"
 node/130.61.52.240 labeled
-$ kubectl label nodes 130.61.84.41 wlservers2=true
+$ kubectl label nodes 130.61.84.41 wlservers2="true"
 node/130.61.84.41 labeled
 ```
 ## **STEP 3**: Modify the domain resource definition
