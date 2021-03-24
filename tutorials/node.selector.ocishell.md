@@ -75,7 +75,10 @@ and modify it into:
 ```
 Save the changes and apply the new domain resource definition.
 ```bash
-$ kubectl apply -f ~/domain.yaml
+<copy>kubectl apply -f ~/domain.yaml</copy>
+```
+The output should be similar to the following:
+```bash
 domain.weblogic.oracle/sample-domain1 configured
 ```
 
