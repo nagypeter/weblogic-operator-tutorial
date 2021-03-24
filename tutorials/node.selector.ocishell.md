@@ -55,7 +55,24 @@ node/130.61.52.240 labeled
 $ kubectl label nodes 130.61.84.41 wlservers2=true
 node/130.61.84.41 labeled
 ```
-###### Modify the domain resource definition ######
+###### Stopping the domain ######
+
+Assignment of pods to the nodes happens during the scheduling So Kubernetes scheduling algorithms take into consideration labels and nodeSelectors when they decide how to schedule the pod. So this happens when the domain is being started. So for the lab purpose you need to request domain to shutdown. to do do this you need to modify the Domain customer resource to order Operator to stop the domain. Please edit the domain.yaml file and find the following line:
+```yaml
+ serverStartPolicy: "IF_NEEDED"
+```
+and modify it into:
+```yaml
+ serverStartPolicy: "NEVER"
+```
+Save the changes and apply the new domain resource definition.
+```bash
+$ kubectl apply -f ~/domain.yaml
+domain.weblogic.oracle/sample-domain1 configured
+```
+
+
+###### Modify the domain resource definition and start the domain ######
 
 Open your `domain.yaml` file in text editor and find the `adminServer:` entry and insert a new property where you can define the placement of the Administration Server. The provided `domain.yaml` already contains this part (starting at around line #101); you just need to enable it by removing the `#` (comment sign) at the beginning of the lines:
 ```yaml
@@ -87,6 +104,11 @@ spec:
         wlservers2: true
   [...]
 ```
+Also change back the serverStartPolicy to order Operator to restart the domain:
+```yaml
+ serverStartPolicy: "IF_NEEDED"
+```
+
 Keep the proper indentation. Save the changes and apply the new domain resource definition.
 ```bash
 $ kubectl apply -f ~/domain.yaml
