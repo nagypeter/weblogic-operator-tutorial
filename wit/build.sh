@@ -64,7 +64,7 @@ $WIT_HOME/bin/imagetool.sh cache addInstaller \
   --version latest
 
 $WIT_HOME/bin/imagetool.sh create \
-  --tag iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:14.1.1-psu \
+  --tag iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store-14.1.1-psu:1.0 \
   --version 14.1.1.0.0 \
   --jdkVersion 8u291 \
   --chown=oracle:root \

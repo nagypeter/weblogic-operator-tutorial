@@ -18,7 +18,7 @@ spec:
         spec:
           domainUID: sample-domain1
           domainHome: /u01/oracle/user_projects/domains/sample-domain1
-          image: iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:14.1.1-psu
+          image: iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store-14.1.1-psu:1.0
           #imagePullSecrets:
           #  - name: sample-weblogic-image-credentials
           domainHomeSourceType: "FromModel"

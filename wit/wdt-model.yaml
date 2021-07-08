@@ -1,6 +1,6 @@
 domainInfo:
-    AdminUserName: '@@SECRET:sample-weblogic-credentials:username@@'
-    AdminPassword: '@@SECRET:sample-weblogic-credentials:password@@'
+    AdminUserName: '@@SECRET:__weblogic-credentials__:username@@'
+    AdminPassword: '@@SECRET:__weblogic-credentials__:password@@'
 topology:
     Name: '@@PROP:DOMAIN_NAME@@'
     AdminServerName: 'admin-server'
