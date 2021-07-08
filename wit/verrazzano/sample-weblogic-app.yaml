@@ -1,0 +1,23 @@
+# Copyright (c) 2020, 2021, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+apiVersion: core.oam.dev/v1alpha2
+kind: ApplicationConfiguration
+metadata:
+  name: sample-weblogic-app
+  namespace: sample-weblogic
+  annotations:
+    version: v1.0.0
+    description: "Sample WebLogic - Opdemo App"
+spec:
+  components:
+    - componentName: sample-weblogic-comp
+      traits:
+        - trait:
+            apiVersion: oam.verrazzano.io/v1alpha1
+            kind: IngressTrait
+            spec:
+              rules:
+                - paths:
+                    - path: "/opdemo"
+                      pathType: Prefix
