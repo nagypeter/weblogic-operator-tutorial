@@ -48,6 +48,8 @@ else
     echo "$WLS_INSTALLER does not exist. Download from https://www.oracle.com/de/middleware/technologies/fusionmiddleware-downloads.html"
 fi
 
+$WIT_HOME/bin/imagetool.sh cache deleteEntry --key=wdt_latest
+
 $WIT_HOME/bin/imagetool.sh cache addInstaller \
   --path $(pwd)/jdk-8u291-linux-x64.tar.gz \
   --type jdk \
@@ -63,16 +65,23 @@ $WIT_HOME/bin/imagetool.sh cache addInstaller \
   --type wdt \
   --version latest
 
+echo -n "Type MOS credentials user name:"
+read SUPPORT_USER
+
+echo -n "Type MOS credentials password:"
+read -s SUPPORT_PASS
+
 $WIT_HOME/bin/imagetool.sh create \
-  --tag iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store-14.1.1-psu:1.0 \
+  --tag iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store-14.1.1-psu:dhii2 \
   --version 14.1.1.0.0 \
   --jdkVersion 8u291 \
   --chown=oracle:root \
   --recommendedPatches \
   --patches=32097167 \
-  --user=peter.nagy@oracle.com \
-  --passwordEnv=SUPPORT_PASS \
-  --wdtModelOnly \
+  --user=$SUPPORT_USER \
+  --password=$SUPPORT_PASS \
+  --wdtDomainHome /u01/oracle/user_projects/domains/sample-domain1 \
+#  --wdtModelOnly \
   --wdtModel ./wdt-model.yaml \
   --wdtArchive ./wdt-archive.zip \
   --wdtVariables ./domain.properties

@@ -3,9 +3,9 @@ domainInfo:
     AdminPassword: '@@SECRET:__weblogic-credentials__:password@@'
 topology:
     Name: '@@PROP:DOMAIN_NAME@@'
-    AdminServerName: 'admin-server'
+    AdminServerName: 'AdminServer'
     Cluster:
-        'cluster-1':
+        '@@PROP:CLUSTER_NAME@@':
             DynamicServers:
                 ServerNamePrefix: 'managed-server'
                 CalculatedListenPorts: false
@@ -13,12 +13,12 @@ topology:
                 ServerTemplate: 'server-template-1'
                 DynamicClusterSize: 5
     Server:
-        'admin-server':
+        'AdminServer':
             ListenPort: 7001
     ServerTemplate:
         'server-template-1':
             ListenPort: '@@PROP:MANAGED_SERVER_PORT@@'
-            Cluster: 'cluster-1'
+            Cluster: '@@PROP:CLUSTER_NAME@@'
 resources:
     JDBCSystemResource:
         testDatasource:
