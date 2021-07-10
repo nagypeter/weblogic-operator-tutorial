@@ -25,13 +25,13 @@ spec:
           includeServerOutInPodLog: true
           replicas: 1
           webLogicCredentialsSecret:
-            name: sample-weblogic-credentials
+            name: weblogic-credentials
           clusters:
             - clusterName: cluster-1
           configuration:
             introspectorJobActiveDeadlineSeconds: 600
             model:
-              runtimeEncryptionSecret: sample-weblogic-runtime-encrypt-secret
+              runtimeEncryptionSecret: runtime-encryption-secret
           monitoringExporter:
             imagePullPolicy: IfNotPresent
             configuration:
