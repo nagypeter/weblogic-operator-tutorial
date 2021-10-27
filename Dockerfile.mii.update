@@ -1,0 +1,15 @@
+ARG SOURCEIMAGE
+FROM ${SOURCEIMAGE}
+
+USER root
+
+RUN mkdir -p /u01/archive/wlsdeploy/applications
+
+COPY target/opdemo.war /u01/archive/wlsdeploy/applications/
+
+RUN cd /u01/archive && \
+    jar cvf ../wdt-archive.zip * && \
+    cp ../wdt-archive.zip /u01/wdt/models/ && \
+    rm -rf /u01/archive
+
+WORKDIR /u01/oracle

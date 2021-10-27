@@ -3,7 +3,6 @@ domainInfo:
     AdminPassword: '@@SECRET:__weblogic-credentials__:password@@'
 topology:
     Name: '@@PROP:DOMAIN_NAME@@'
-    AdminServerName: 'AdminServer'
     Cluster:
         '@@PROP:CLUSTER_NAME@@':
             DynamicServers:
@@ -13,7 +12,7 @@ topology:
                 ServerTemplate: 'server-template-1'
                 DynamicClusterSize: 5
     Server:
-        'AdminServer':
+        AdminServer:
             ListenPort: 7001
     ServerTemplate:
         'server-template-1':
@@ -53,11 +52,11 @@ resources:
                     JNDIName: jdbc/testDatasource
                 JDBCDriverParams:
                     URL: 'jdbc:oracle:thin:@//xxx.xxx.x.xxx:1521/ORCLCDB'
-                    PasswordEncrypted: '@@SECRET:dbcredentials:dbpwd@@'
+                    PasswordEncrypted: 'tiger'
                     DriverName: oracle.jdbc.OracleDriver
                     Properties:
                         user:
-                            Value: '@@SECRET:dbcredentials:dbuser@@'
+                            Value: 'scott'
 appDeployments:
     Application:
         # Quote needed because of hyphen in string

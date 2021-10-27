@@ -18,17 +18,25 @@ metadata:
     weblogic.domainUID: sample-domain1
 
 spec:
+  domainHomeSourceType: FromModel
+
   # This parameter provides the location of the WebLogic Domain Home (from the container's point of view).
   # Note that this might be in the image itself or in a mounted volume or network storage.
-  domainHome: /u01/oracle/user_projects/domains/sample-domain1
+  # domainHome: /u01/oracle/user_projects/domains/sample-domain1
+
+  # The WebLogic Domain Home, this must be a location within
+  # the image for 'Model in Image' domains.
+  domainHome: /u01/domains/sample-domain1
 
   # If the domain home is inside the Docker image, set this to `true`, otherwise set `false`:
-  domainHomeInImage: true
+  # domainHomeInImage: true
 
   # Update this with the name of the Docker image that will be used to run your domain:
   #image: "YOUR_OCI_REGION_CODE.ocir.io/YOUR_TENANCY_NAME/weblogic-operator-tutorial:latest"
-  #image: "fra.ocir.io/johnpsmith/weblogic-operator-tutorial:latest"
-  image: "iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:1.0"
+  #image: "iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:1.0"
+  #image: iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:12214-patched-1.0
+  #image: iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:1411-patched-mii-fromcontainer-2.0
+  image: iad.ocir.io/weblogick8s/weblogic-operator-tutorial-store:1411-patched-mii-fromcontainer-3.0
 
   # imagePullPolicy defaults to "Always" if image version is :latest
   imagePullPolicy: "Always"
@@ -125,3 +133,30 @@ spec:
   #
 #  configOverrides: jdbccm
 #  configOverrideSecrets: [dbsecret]
+
+  # Change the restartVersion to force the introspector job to rerun
+  # and apply any new model configuration, to also force a subsequent
+  # roll of your domain's WebLogic Server pods.
+  restartVersion: '1'
+
+  # Changes to this field cause the operator to repeat its introspection of the
+  #  WebLogic domain configuration.
+  introspectVersion: '1'
+
+  configuration:
+
+    # Settings for domainHomeSourceType 'FromModel'
+    model:
+      # Valid model domain types are 'WLS', 'JRF', and 'RestrictedJRF', default is 'WLS'
+      domainType: "WLS"
+
+      # Optional configmap for additional models and variable files
+      #configMap: sample-domain1-wdt-config-map
+
+      # All 'FromModel' domains require a runtimeEncryptionSecret with a 'password' field
+      runtimeEncryptionSecret: sample-domain1-runtime-encryption-secret
+
+    # Secrets that are referenced by model yaml macros
+    # (the model yaml in the optional configMap or in the image)
+    #secrets:
+    #- sample-domain1-datasource-secret
